@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36154957-1D29-41EC-95C7-D547C100414F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Yqun.Permissions.Common</RootNamespace>
+    <AssemblyName>Yqun.Permissions.Common</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IApplyAuth.cs" />
+    <Compile Include="IAuthPolicy.cs" />
+    <Compile Include="IRole.cs" />
+    <Compile Include="ISystemAuth.cs" />
+    <Compile Include="NodeType.cs" />
+    <Compile Include="PermissionCollection\DataPermissionCollection.cs" />
+    <Compile Include="PermissionCollection\FieldPermissionCollection.cs" />
+    <Compile Include="PermissionCollection\FunctionPermissionCollection.cs" />
+    <Compile Include="PermissionCollection\PermissionCollection.cs" />
+    <Compile Include="PermissionCollection\RecordListElementCollection.cs" />
+    <Compile Include="PermissionCollection\RecordPermissionCollection.cs" />
+    <Compile Include="Permission\DataPermission.cs" />
+    <Compile Include="Permission\DatasPermission.cs" />
+    <Compile Include="Permission\FieldPermission.cs" />
+    <Compile Include="Permission\FieldsPermission.cs" />
+    <Compile Include="Permission\FunctionPermission.cs" />
+    <Compile Include="Permission\FunctionsPermission.cs" />
+    <Compile Include="Permission\Permission.cs" />
+    <Compile Include="Permission\PermissionType.cs" />
+    <Compile Include="Permission\RecordListElement.cs" />
+    <Compile Include="Permission\RecordPermission.cs" />
+    <Compile Include="Permission\RecordsPermission.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleCollection.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="权限视图类\ColumnInfo.cs" />
+    <Compile Include="权限视图类\ColumnInfoCollection.cs" />
+    <Compile Include="权限视图类\FunctionInfo.cs" />
+    <Compile Include="权限视图类\FunctionInfoCollection.cs" />
+    <Compile Include="权限视图类\ModuleInfo.cs" />
+    <Compile Include="权限视图类\SubModuleInfo.cs" />
+    <Compile Include="权限视图类\SubModuleInfoCollection.cs" />
+    <Compile Include="权限视图类\TableInfo.cs" />
+    <Compile Include="权限视图类\TableInfoCollection.cs" />
+    <Compile Include="权限视图类\TreeInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy  $(TargetFileName) "$(SolutionDir)RefrenceCenter"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

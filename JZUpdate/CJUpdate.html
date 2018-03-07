@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>铁路试验信息管理系统更新说明</title>
+    <style>
+        h1
+        {
+            font-size: 16px;
+            width: 100%;
+            color: #2e8b57;
+        }
+        h2
+        {
+            font-size: 14px;
+            width: 100%;
+            color: #483d8b;
+        }
+        p
+        {
+            font-size: 12px;
+            line-height: 20px;
+        }
+        .btnhistory
+        {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+            background-color: #E6EDF2;
+            cursor: pointer;
+        }
+    </style>
+
+    <script language="javascript" type="text/javascript">
+function ShowAndHideHistory()
+{
+	var btntext=document.getElementById("divBtn").innerHTML;
+//	alert(btntext);
+	if(btntext=="查看历史更新")
+	{
+	    document.getElementById("divBtn").innerHTML="隐藏历史更新";
+	    document.getElementById("divHistory").style.display = "";
+	}
+	else
+	{
+	    document.getElementById("divBtn").innerHTML="查看历史更新";
+	    document.getElementById("divHistory").style.display = "none";
+	}
+}
+    </script>
+
+</head>
+<body>
+    <h1>
+        更新说明[2014-06-30]</h1>
+    <p>
+        1、优化了更新程序<br />
+        2、优化了人员资料头像上传，不合格报告上传从限制大小改成由系统自动处理图片为合适大小<br />
+        3、优化了资料里的下拉框用户不可修改只能填，但用户能往里面复制文本的bug<br />
+        4、表单支持超链接功能<br />
+        5、优化了台帐某些日期列后面多了0:00:00或显示数字<br />
+        6、优化了模板缓存，以前可能需要打开另个一个模板的资料，现在只需要重新点击左侧树的模板即可<br />
+        7、修复了用户可以填写其它试验室的不合格资料的监理意见bug<br />
+        8、不合格报告支持查看已合格报告的合格时间
+    </p>
+    <div id="divHistory" style="display: none;">
+        <h2>
+            2014-06-30更新说明</h2>
+        <p>
+            1、优化了更新程序<br />
+            2、优化了人员资料头像上传，不合格报告上传从限制大小改成由系统自动处理图片为合适大小<br />
+            3、优化了资料里的下拉框用户不可修改只能填，但用户能往里面复制文本的bug<br />
+            4、表单支持超链接功能<br />
+            5、优化了台帐某些日期列后面多了0:00:00或显示数字<br />
+            6、优化了模板缓存，以前可能需要打开另个一个模板的资料，现在只需要重新点击左侧树的模板即可<br />
+            7、修复了用户可以填写其它试验室的不合格资料的监理意见bug<br />
+            8、不合格报告支持查看已合格报告的合格时间
+        </p>
+    </div>
+    <div id="divBtn" class="btnhistory" onclick="ShowAndHideHistory();">查看历史更新</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF84EB8E-96AA-4FA1-AFC9-739C6F820C4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShuXianCaiJiComponents</RootNamespace>
+    <AssemblyName>ShuXianCaiJiComponents</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BizCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="BizComponents, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ShuXianCaiJi\bin\Release\Interop.ADODB.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SerialPortCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yqun.Bases, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.BO.BOBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\RefrenceCenter\Yqun.BO.BOBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.Encoder, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="Yqun.Data.AccessHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Yqun.Services.Agent, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CaijiCommHelper.cs" />
+    <Compile Include="CaijiKeyHelper.cs" />
+    <Compile Include="CalHelper.cs" />
+    <Compile Include="ConfigOperation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlLocalHlper.cs" />
+    <Compile Include="SynServerTime.cs" />
+    <Compile Include="UploadOperation.cs" />
+    <Compile Include="UploadWNJInfo.cs" />
+    <Compile Include="UploadYLJInfo.cs" />
+    <Compile Include="XMLOperation.cs" />
+    <Compile Include="屈服\CommonQuFu.cs" />
+    <Compile Include="屈服\FYQF.cs" />
+    <Compile Include="屈服\NewCommonQuFu.cs" />
+    <Compile Include="屈服\OKEQF.cs" />
+    <Compile Include="屈服\QFModule.cs" />
+    <Compile Include="屈服\QFNewCommon.cs" />
+    <Compile Include="屈服\QuFuBase.cs" />
+    <Compile Include="屈服\QuFuFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShuXianCaiJiModule\ShuXianCaiJiModule.csproj">
+      <Project>{633B1F7F-D84E-47EF-B41D-0FBAABCC5975}</Project>
+      <Name>ShuXianCaiJiModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dll\SerialPortCommon.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy  $(TargetFileName) "$(SolutionDir)RefrenceCenter"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

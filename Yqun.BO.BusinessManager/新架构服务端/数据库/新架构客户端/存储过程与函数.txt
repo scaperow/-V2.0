@@ -1,0 +1,824 @@
+﻿if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_pxjz_report]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_pxjz_report]
+GO
+-- ============================================= 
+-- Author:	 张宏伟 
+-- Create date: 2014-3-25 
+-- Description: 查询平行频率，见证频率 
+-- ============================================= 
+
+ CREATE PROCEDURE [dbo].[sp_pxjz_report]
+	-- Add the parameters for the stored procedure here
+	@testcode varchar(5000), --为空
+	@ftype TINYINT, -- 为空
+	@startdate varchar(30),--为空
+	@enddate varchar(30),--为空
+	@pageSize int=10,
+	@page        int, 
+	@fldSort    varchar(200) = null,    ----排序字段列表或条件
+	@Sort        bit = 0,    
+	@pageCount    int = 1 output,           
+	@Counts    int = 1 output
+AS
+BEGIN
+
+	DECLARE 
+	@sqls nvarchar(4000)  
+
+ 
+		CREATE TABLE #tmp1
+	(
+	id bigint identity(1,1)  primary key,
+	modelName NVARCHAR(50),
+	condition FLOAT,
+	zjCount INT,
+	pxCount INT,
+	frequency NVARCHAR(50),
+	result VARCHAR(10),
+	segment VARCHAR(100),
+	jl VARCHAR(100),
+	sg VARCHAR(100),
+	testroom VARCHAR(100),
+	modelID NVARCHAR(50),
+	testroomID NVARCHAR(50),
+	pxqulifty   NVARCHAR(50)
+	)
+
+	CREATE TABLE #t1
+	(
+	ModelName NVARCHAR(50),
+	ModuleID NVARCHAR(50),
+	TestRoomCode NVARCHAR(50),
+	zjcount FLOAT,
+	condition FLOAT
+	)
+
+		CREATE TABLE #t2
+	(
+	sgcode NVARCHAR(50),
+	jlcode NVARCHAR(50),
+	ModuleID NVARCHAR(50),
+	pxcount FLOAT
+	)
+	
+	IF @testcode!=''
+	BEGIN
+  
+  			
+	
+
+	IF @ftype=1
+	 BEGIN
+     
+ SET @sqls='INSERT #t1
+	        ( ModelName ,
+	          ModuleID ,
+	          TestRoomCode ,
+	          zjcount,condition
+	        )	SELECT DISTINCT a.ModelName,b.ModuleID,a.TestRoomCode,b.zjcount,a.Frequency*100 AS condition    FROM dbo.sys_biz_reminder_Itemfrequency a JOIN	 
+	(SELECT ModuleID,TestRoomCode,COUNT(1) AS zjcount FROM dbo.sys_document WHERE  ( TryType=''见证'' OR TryType = ''自检''  ) AND BGRQ>='''+@startdate+''' AND BGRQ<'''+@enddate+'''  GROUP BY TestRoomCode,ModuleID) AS b 
+	ON a.TestRoomCode = b.TestRoomCode AND a.IsActive=1 AND a.FrequencyType=1  AND CAST(a.ModelIndex AS UNIQUEIDENTIFIER)=b.ModuleID AND b.TestRoomCode IN ('+@testcode+') '
+  EXEC sp_executesql @sqls   
+ 
+SET @sqls='INSERT #t2
+	        ( sgcode, jlcode, ModuleID, pxcount ) SELECT DISTINCT a.TestRoomCode AS sgcode,c.TestRoomCode AS jlcode,c.ModuleID,COUNT(1) pxcount  
+ FROM dbo.sys_document a JOIN dbo.sys_px_relation b ON a.ID=b.SGDataID JOIN dbo.sys_document c ON 
+b.PXDataID=c.ID AND a.ModuleID=c.ModuleID  AND a.BGRQ>='''+@startdate+''' AND a.BGRQ<'''+@enddate+'''   AND c.BGRQ>='''+@startdate+''' AND c.BGRQ<'''+@enddate+'''   AND a.TestRoomCode IN ('+@testcode+')
+GROUP BY  c.TestRoomCode,a.TestRoomCode,c.ModuleID'
+  EXEC sp_executesql @sqls 
+ 
+			  SELECT ModelName,a.ModuleID ,sgcode,jlcode,zjcount,pxcount,condition,ROUND(CONVERT(FLOAT,ISNULL(pxCount,0)) / CONVERT(FLOAT,zjCount),4)*100 AS frequency,
+ dbo.Fweb_ReturnPXQualityCount_New( a.ModuleID ,sgcode,@startdate,@enddate) AS pxqulifty  INTO #t3 FROM #t1 a   JOIN #t2 b ON   a.TestRoomCode=b.sgcode AND  a.ModuleID = b.ModuleID
+		
+		INSERT #tmp1
+		        ( 
+		          modelName ,
+		          condition ,
+		          zjCount ,
+		          pxCount ,
+		          frequency ,
+		          result ,
+		          segment ,
+		          jl ,
+		          sg ,
+		          testroom ,
+		          modelID ,
+		          testroomID ,
+		          pxqulifty
+		        ) 
+		SELECT b.ModelName,b.condition,b.zjcount,b.pxcount,b.frequency, (CASE WHEN ROUND(CONVERT(FLOAT,ISNULL(pxCount,0)) / CONVERT(FLOAT,zjCount),4)*100>=condition THEN '满足' ELSE '不满足' END ),a.标段名称,c.单位名称,a.单位名称,a.试验室名称,b.ModuleID,b.sgcode,b.pxqulifty FROM dbo.v_bs_codeName a JOIN #t3 b ON a.试验室编码=b.sgcode JOIN dbo.v_bs_codeName c ON b.jlcode=c.试验室编码 
+		End	    		 
+	 END
+  
+  IF @ftype=2
+  BEGIN
+ 
+ SET @sqls='INSERT #t1
+	        ( ModelName ,
+	          ModuleID ,
+	          TestRoomCode ,
+	          zjcount,condition
+	        )	SELECT DISTINCT a.ModelName,b.ModuleID,a.TestRoomCode,b.zjcount,a.Frequency*100 AS condition    FROM dbo.sys_biz_reminder_Itemfrequency a JOIN	 
+	(SELECT ModuleID,TestRoomCode,COUNT(1) AS zjcount FROM dbo.sys_document WHERE  ( TryType=''见证'' OR TryType = ''自检''  ) AND BGRQ>='''+@startdate+''' AND BGRQ<'''+@enddate+'''  GROUP BY TestRoomCode,ModuleID) AS b 
+	ON a.TestRoomCode = b.TestRoomCode AND a.IsActive=1 AND a.FrequencyType=2  AND CAST(a.ModelIndex AS UNIQUEIDENTIFIER)=b.ModuleID AND b.TestRoomCode IN ('+@testcode+') '
+  EXEC sp_executesql @sqls   
+
+
+
+ CREATE TABLE #t0
+ (
+ ModuleID NVARCHAR(50),
+ sgcode NVARCHAR(50),
+ jlcode NVARCHAR(50),
+ jzcode FLOAT
+ )
+
+
+SET @sqls=' INSERT #t0
+         ( ModuleID,jlcode ,sgcode , jzcode )
+ SELECT DISTINCT b.ModuleID,b.TryPersonTestRoomCode,b.TestRoomCode,b.zjcount     FROM dbo.sys_biz_reminder_Itemfrequency a JOIN	 
+	(SELECT ModuleID,TryPersonTestRoomCode,TestRoomCode,COUNT(1) AS zjcount FROM dbo.sys_document WHERE    TryType=''见证''     AND BGRQ>='''+@startdate+''' AND BGRQ<'''+@enddate+'''  GROUP BY TryPersonTestRoomCode,TestRoomCode,ModuleID) AS b 
+	ON a.TestRoomCode = b.TestRoomCode AND a.IsActive=1 AND a.FrequencyType=2  AND CAST(a.ModelIndex AS UNIQUEIDENTIFIER)=b.ModuleID AND b.TestRoomCode IN ('+@testcode+')'
+	  EXEC sp_executesql @sqls 
+
+
+INSERT #tmp1
+        (  
+          modelName ,
+          condition ,
+          zjCount ,
+          pxCount ,
+          frequency ,
+          result ,
+          segment ,
+          jl ,
+          sg ,
+          testroom ,
+          modelID ,
+          testroomID ,
+          pxqulifty
+        )
+		SELECT a.ModelName,a.condition,a.zjcount,b.jzcode,ROUND(CONVERT(FLOAT,ISNULL(jzcode,0)) / CONVERT(FLOAT,zjCount),4)*100 AS frequency,(CASE WHEN ROUND(CONVERT(FLOAT,ISNULL(jzcode,0)) / CONVERT(FLOAT,zjCount),4)*100>=condition THEN '满足' ELSE '不满足' END ),c.标段名称,d.单位名称,c.单位名称,c.试验室名称,a.ModuleID,TestRoomCode,''
+		 FROM #t1 a JOIN #t0 b ON a.ModuleID = b.ModuleID AND a.TestRoomCode=b.sgcode  JOIN dbo.v_bs_codeName c ON a.TestRoomCode=c.试验室编码  JOIN dbo.v_bs_codeName d ON b.jlcode=d.试验室编码 
+ 
+  END   
+  
+    
+
+				   --取得分页总数
+  declare @totalcounts int
+  select @totalcounts=count(ID) from #tmp1
+	  declare @pageIndex int --总数/页大小
+    declare @lastcount int --总数%页大小  
+
+	 set @pageIndex = @totalcounts/@pageSize
+    set @lastcount = @totalcounts%@pageSize
+    if @lastcount > 0
+        set @pageCount = @pageIndex + 1
+    else
+        set @pageCount = @pageIndex 
+
+
+		SET @Counts=@totalcounts
+	SELECT * from #tmp1  	
+	 where id>(@pageSize*(@page-1)) and id<=(@pageSize*@page)  
+
+
+			
+END
+GO
+
+
+
+-- ============================================= 
+-- Author:	 谭利平 
+-- Create date: 2014-3-14 
+-- Description: 求龄期提醒的开始时间 
+-- ============================================= 
+CREATE FUNCTION [dbo].[Fsys_StadiumStartDate] 
+( 
+@TestRoomCode VARCHAR(50), 
+@ZJRQ DATETIME, 
+@Temperatures INT , 
+@DateSpan INT 
+) 
+
+RETURNS DATETIME 
+BEGIN 
+
+DECLARE @EarlistDate DATETIME --记录温度提醒开始时间
+DECLARE @LastDate DATETIME --记录龄期提醒开始时间
+SET @LastDate=DATEADD(mi, @DateSpan*60, @ZJRQ) 
+IF @Temperatures>0 
+--计算温度开始时间
+BEGIN 
+SELECT @EarlistDate=MIN( TestTime) FROM ( 
+SELECT a.TestTime,a.TestRoomCode, 
+( 
+SELECT SUM(TemperatureAvg) FROM dbo.sys_stadium_temperature b WHERE 
+a.TestTime>=b.TestTime AND a.TestRoomCode=b.TestRoomCode 
+AND b.TestTime>=@ZJRQ AND b.TestRoomCode=@TestRoomCode 
+)AS TRTSum 
+FROM dbo.sys_stadium_temperature a 
+where TestTime>=@ZJRQ AND TestRoomCode=@TestRoomCode 
+)T WHERE TRTSum>=@Temperatures 
+END 
+
+--温度为空
+IF	@EarlistDate IS NULL 
+BEGIN 
+SET @EarlistDate=@LastDate 
+END 
+ELSE	
+BEGIN 
+
+--比较温度开始提醒时间和龄期提醒时间
+IF DATEDIFF(ss,@LastDate,@EarlistDate)>0 
+BEGIN 
+SET @EarlistDate=@LastDate 
+END 
+END 
+
+RETURN @EarlistDate 
+END 
+GO
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_report]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_report]
+GO
+
+CREATE PROCEDURE [dbo].[sp_report]
+	@sDate DATETIME,
+	@eDate DATETIME ,
+	@testRoomCode varchar(6000)
+AS
+BEGIN	
+	DECLARE	@strSQL varchar(8000) -- 主语句
+	CREATE TABLE #tmp (testRoomCode NVARCHAR(64) NOT null)
+	insert into #tmp select * from dbo.Fweb_SplitExpression(@testRoomCode,',')
+
+	SELECT g.ID, g.TestName, g.UnitName, g.Frequency,SUM(zj) AS zj, SUM(invalid) AS zjinvalid,
+	SUM(px) AS px, SUM(jz) AS jz,SUM(sl) AS sl,SUM(pxInvalid) AS pxInvalid INTO #tmp2 FROM (
+	SELECT a.ID, a.TestName, a.UnitName, a.Frequency,b.ModuleID, (CASE WHEN c.ID is NULL THEN 0 ELSE 1 END) AS zj,
+	 (CASE WHEN d.ID is NULL THEN 0 ELSE 1 END) AS invalid,
+	 (CASE WHEN e.SGDataID is NULL THEN 0 ELSE 1 END) AS px,
+	 (CASE WHEN e.pxInvalid is NULL THEN 0 ELSE 1 END) AS pxInvalid,
+	 (CASE WHEN f.ID is NULL THEN 0 ELSE 1 END) AS jz,
+	 (CASE WHEN c.ShuLiang is NULL THEN 0 ELSE c.ShuLiang END) AS sl FROM dbo.sys_report_config a
+	LEFT JOIN dbo.sys_report_config_module b ON a.ID = b.ReportConfigID
+	LEFT JOIN (SELECT x.ID,x.ModuleID,x.ShuLiang FROM dbo.sys_document x
+	JOIN #tmp y ON x.TestRoomCode = y.testRoomCode
+	WHERE x.BGRQ>=@sDate AND x.BGRQ<@eDate AND x.Status>0) as c 
+	ON b.ModuleID = c.ModuleID
+	LEFT JOIN (SELECT ID FROM dbo.sys_invalid_document WHERE AdditionalQualified=0) as d ON c.ID = d.ID
+	LEFT JOIN (SELECT SGDataID,p.ID AS pxInvalid FROM dbo.sys_px_relation m JOIN dbo.sys_document n ON n.ID = m.PXDataID 
+	LEFT JOIN dbo.sys_invalid_document p ON n.ID=p.ID AND p.AdditionalQualified=0
+	WHERE n.BGRQ>=@sDate AND n.BGRQ<@eDate AND n.Status>0) as e ON c.ID = e.SGDataID
+	LEFT JOIN (SELECT ID FROM dbo.sys_document WHERE TryType='见证') as f ON f.ID = c.ID) g
+	GROUP BY g.ID, g.TestName, g.UnitName, g.Frequency
+	
+	SELECT g.ID, g.TestName, g.UnitName, g.Frequency,SUM(zj) AS zj, SUM(invalid) AS zjinvalid,
+	SUM(px) AS px, SUM(jz) AS jz,SUM(sl) AS sl,SUM(pxInvalid) AS pxInvalid INTO #tmp3 FROM (
+	SELECT a.ID, a.TestName, a.UnitName, a.Frequency,b.ModuleID, (CASE WHEN c.ID is NULL THEN 0 ELSE 1 END) AS zj,
+	 (CASE WHEN d.ID is NULL THEN 0 ELSE 1 END) AS invalid,
+	 (CASE WHEN e.SGDataID is NULL THEN 0 ELSE 1 END) AS px,
+	 (CASE WHEN e.pxInvalid is NULL THEN 0 ELSE 1 END) AS pxInvalid,
+	 (CASE WHEN f.ID is NULL THEN 0 ELSE 1 END) AS jz,
+	 (CASE WHEN c.ShuLiang is NULL THEN 0 ELSE c.ShuLiang END) AS sl FROM dbo.sys_report_config a
+	LEFT JOIN dbo.sys_report_config_module b ON a.ID = b.ReportConfigID
+	LEFT JOIN (SELECT x.ID,x.ModuleID,x.ShuLiang FROM dbo.sys_document x
+	JOIN #tmp y ON x.TestRoomCode = y.testRoomCode
+	WHERE x.Status>0) as c 
+	ON b.ModuleID = c.ModuleID
+	LEFT JOIN (SELECT ID FROM dbo.sys_invalid_document WHERE AdditionalQualified=0) as d ON c.ID = d.ID
+	LEFT JOIN (SELECT SGDataID,p.ID AS pxInvalid FROM dbo.sys_px_relation m JOIN dbo.sys_document n ON n.ID = m.PXDataID 
+	LEFT JOIN dbo.sys_invalid_document p ON n.ID=p.ID AND p.AdditionalQualified=0
+	WHERE n.Status>0) as e ON c.ID = e.SGDataID
+	LEFT JOIN (SELECT ID FROM dbo.sys_document WHERE TryType='见证') as f ON f.ID = c.ID) g
+	GROUP BY g.ID, g.TestName, g.UnitName, g.Frequency
+	
+	SELECT a.ID,a.TestName,a.UnitName,a.Frequency,a.zj,a.jz,a.px,CAST(a.sl AS DECIMAL(10,2)) AS sl,
+	CASE WHEN a.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,(a.zj-a.zjinvalid)) / CONVERT(FLOAT,a.zj),4)*100 END AS zjF,
+	CASE WHEN a.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,a.jz) / CONVERT(FLOAT,a.zj),4)*100 END AS jzF,
+	CASE WHEN a.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,a.px) / CONVERT(FLOAT,a.zj),4)*100 END AS pxF,
+	CASE WHEN a.px=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,(a.px-a.pxInvalid)) / CONVERT(FLOAT,a.px),4)*100 END AS pxF2,
+	b.zj AS zjTotal,b.jz AS jzTotal,b.px AS pxTotal, CAST(b.sl AS DECIMAL(10,2)) AS slTotal,
+	CASE WHEN b.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,(b.zj-b.zjinvalid)) / CONVERT(FLOAT,b.zj),4)*100 END AS zjFTotal,
+	CASE WHEN b.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,b.jz) / CONVERT(FLOAT,b.zj),4)*100 END AS jzFTotal,
+	CASE WHEN b.zj=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,b.px) / CONVERT(FLOAT,b.zj),4)*100 END AS pxFTotal,
+	CASE WHEN b.px=0 THEN 0 ELSE ROUND(CONVERT(FLOAT,(b.px-b.pxInvalid)) / CONVERT(FLOAT,b.px),4)*100 END AS pxF2Total
+	INTO #tmp4 FROM #tmp2 a
+	JOIN #tmp3 b ON a.ID=b.ID ORDER BY a.ID
+	
+	SELECT ID ,
+	        TestName ,
+	        UnitName ,
+	        Frequency ,
+	        CASE WHEN zj=0 THEN '' ELSE CONVERT(NVARCHAR,zj) END AS zj ,
+	        CASE WHEN jz=0 THEN '' ELSE CONVERT(NVARCHAR,jz) END AS jz ,
+	        CASE WHEN px=0 THEN '' ELSE CONVERT(NVARCHAR,px) END AS px ,
+	        CASE WHEN sl=0.00 THEN '' ELSE CONVERT(NVARCHAR,sl) END AS sl ,
+	        CASE WHEN zjF=0 THEN '' ELSE CONVERT(NVARCHAR,zjF)+'%' END AS zjF ,
+	        CASE WHEN jzF=0 THEN '' ELSE CONVERT(NVARCHAR,jzF)+'%' END AS jzF ,
+	        CASE WHEN pxF=0 THEN '' ELSE CONVERT(NVARCHAR,pxF)+'%' END AS pxF ,
+	        CASE WHEN pxF2=0 THEN '' ELSE CONVERT(NVARCHAR,pxF2)+'%' END AS pxF2 ,
+	        CASE WHEN zjTotal=0 THEN '' ELSE CONVERT(NVARCHAR,zjTotal) END AS zjTotal ,
+	        CASE WHEN jzTotal=0 THEN '' ELSE CONVERT(NVARCHAR,jzTotal) END AS jzTotal ,
+	        CASE WHEN pxTotal=0 THEN '' ELSE CONVERT(NVARCHAR,pxTotal) END AS pxTotal ,
+	        CASE WHEN slTotal=0.00 THEN '' ELSE CONVERT(NVARCHAR,slTotal) END AS slTotal ,
+	        CASE WHEN zjFTotal=0 THEN '' ELSE CONVERT(NVARCHAR,zjFTotal)+'%' END AS zjFTotal ,
+	        CASE WHEN jzFTotal=0 THEN '' ELSE CONVERT(NVARCHAR,jzFTotal)+'%' END AS jzFTotal ,
+	        CASE WHEN pxFTotal=0 THEN '' ELSE CONVERT(NVARCHAR,pxFTotal)+'%' END AS pxFTotal ,
+	        CASE WHEN pxF2Total=0 THEN '' ELSE CONVERT(NVARCHAR,pxF2Total)+'%' END AS pxF2Total 	         
+	        FROM #tmp4
+	
+END
+GO
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_px_chart]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_px_chart]
+GO
+CREATE PROCEDURE [dbo].[sp_px_chart] 
+	@testRoomID VARCHAR(50),
+	@start varchar(30),
+	@end varchar(30),
+	@modelID UNIQUEIDENTIFIER
+AS
+BEGIN
+	CREATE TABLE #tmp
+	(
+		chartDate VARCHAR(20),
+		zjCount INT,
+		pxjzCount INT,	
+	)
+	
+	CREATE TABLE #tmp1
+	(
+		chartDate VARCHAR(20),
+		countnum INT	
+	)
+	
+	CREATE TABLE #tmp2
+	(
+		chartDate VARCHAR(20),
+		countnum INT	
+	)
+	
+	CREATE TABLE #tmp3
+	(
+		chartDate1 VARCHAR(20),
+		chartDate2 VARCHAR(20),
+		zjCount INT,
+		pxjzCount INT,	
+	)
+ 
+	INSERT INTO #tmp1
+	( chartDate, countnum )
+	SELECT REPLACE(CONVERT(varchar(12) , BGRQ, 111 ) ,'/','-'),COUNT(1) FROM dbo.sys_document 
+	WHERE Status>0 AND ModuleID=@modelID AND TestRoomCode=@testRoomID
+	AND BGRQ>=@start AND BGRQ<@end AND (TryType='自检' OR TryType='见证')
+	GROUP BY REPLACE(CONVERT(varchar(12) , BGRQ, 111 )  ,'/','-')
+	
+	INSERT INTO #tmp2
+	( chartDate, countnum )
+	SELECT REPLACE(CONVERT(varchar(12) , c.BGRQ, 111 ) ,'/','-'),COUNT(1) FROM dbo.sys_document a
+	JOIN dbo.sys_px_relation b ON a.ID = b.SGDataID
+	JOIN dbo.sys_document c ON c.ID = b.PXDataID
+	WHERE a.Status>0 AND a.ModuleID=@modelID AND a.TestRoomCode=@testRoomID
+	AND a.BGRQ>=@start AND a.BGRQ<@end AND (a.TryType='自检' OR a.TryType='见证')
+	AND c.BGRQ>=@start AND c.BGRQ<@end AND c.Status>0
+	GROUP BY REPLACE(CONVERT(varchar(12) , c.BGRQ, 111 )  ,'/','-')
+		
+	INSERT #tmp3
+	        ( chartDate1 ,
+	          chartDate2 ,
+	          zjCount ,
+	          pxjzCount
+	        )
+	SELECT a.chartDate,b.chartDate,a.countnum,b.countnum 
+	FROM #tmp1 a FULL JOIN #tmp2 b ON a.chartDate = b.chartDate
+	
+	UPDATE #tmp3 SET chartDate1=chartDate2 WHERE chartDate1 IS NULL
+	
+	
+	INSERT #tmp
+	        ( chartDate, zjCount, pxjzCount )
+	SELECT chartDate1,zjCount,pxjzCount FROM  #tmp3
+
+	update #tmp set zjCount=0 where zjCount is null
+	update #tmp set pxjzCount=0 where pxjzCount is null
+	select * from #tmp order by chartDate
+			
+END
+GO
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_update]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_update]
+GO
+CREATE PROCEDURE sp_update 
+	
+AS
+BEGIN
+	set xact_abort on
+	BEGIN TRAN
+	
+	DELETE FROM dbo.sys_biz_ModuleCatlog
+	DELETE FROM dbo.sys_biz_SheetCatlog
+	DELETE FROM dbo.sys_dictionary
+	DELETE FROM dbo.sys_formulas WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_formulas WHERE ID IN (SELECT ID FROM dbo.sys_formulas_update)
+	DELETE FROM dbo.sys_module_sheet WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_module_sheet WHERE ID IN (SELECT ID FROM dbo.sys_module_sheet_update)
+	DELETE FROM dbo.sys_module_config WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_module_config WHERE ID IN (SELECT ID FROM dbo.sys_module_config_update)
+	DELETE FROM dbo.sys_module WHERE ID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_sheet WHERE ID IN (SELECT ID FROM dbo.sys_sheet_update)
+	DELETE FROM dbo.sys_stadium_config WHERE ID IN (SELECT ID FROM dbo.sys_stadium_config_update)
+	
+	INSERT INTO dbo.sys_biz_ModuleCatlog SELECT * FROM dbo.sys_biz_ModuleCatlog_update
+	INSERT INTO dbo.sys_biz_SheetCatlog SELECT * FROM sys_biz_SheetCatlog_update
+	INSERT INTO dbo.sys_dictionary SELECT * FROM sys_dictionary_update      
+	INSERT INTO dbo.sys_module SELECT * FROM sys_module_update  
+	INSERT INTO dbo.sys_sheet SELECT * FROM sys_sheet_update
+	INSERT INTO dbo.sys_module_sheet SELECT * FROM dbo.sys_module_sheet_update
+	INSERT INTO dbo.sys_formulas SELECT * FROM sys_formulas_update
+	INSERT INTO dbo.sys_stadium_config SELECT * FROM dbo.sys_stadium_config_update
+	INSERT INTO dbo.sys_module_config SELECT * FROM dbo.sys_module_config_update
+	
+	DELETE FROM dbo.sys_biz_ModuleCatlog_update
+	DELETE FROM dbo.sys_biz_SheetCatlog_update
+	DELETE FROM dbo.sys_dictionary_update
+	DELETE FROM dbo.sys_formulas_update
+	DELETE FROM dbo.sys_module_sheet_update
+	DELETE FROM dbo.sys_module_update
+	DELETE FROM dbo.sys_sheet_update
+	DELETE FROM dbo.sys_stadium_config_update
+	DELETE FROM dbo.sys_module_config_update
+	
+	IF @@error<>0
+	BEGIN
+		rollback tran 
+		return 0
+	END 
+	ELSE
+	BEGIN 
+		commit tran
+		return 1
+	END
+END
+GO
+
+
+go
+set ANSI_NULLS ON
+set QUOTED_IDENTIFIER ON
+go
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_pager]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_pager]
+GO
+create  PROCEDURE [dbo].[sp_pager]
+@tblname VARCHAR(255), -- 表名
+@strGetFields nvarchar(3000) , -- 需要返回的列
+@fldName varchar(255), -- 排序的字段名
+@PageSize int , -- 页尺寸
+@PageIndex int , -- 页码
+@doCount bit , -- 返回, 非0 值则返回记录总数
+@OrderType bit , -- 设置排序类型, 非0 值则降序
+@strWhere varchar(6000)  -- 查询条件(注意: 不要加where)
+AS
+BEGIN	
+declare @strSQL varchar(5000) -- 主语句
+declare @strOrder varchar(400) -- 排序类型
+if @doCount != 0
+BEGIN
+    set @strSQL = 'select count(*) as Total from ' + @tblName + ' where 1=1 '+ @strWhere
+END --以上代码的意思是如果@doCount传递过来的不是，就执行总数统计。以下的所有代码都是@doCount为的情况：
+ELSE
+BEGIN
+   if @OrderType != 0--降序
+   begin
+    set @strOrder = ' order by ' + @fldName +' desc'--如果@OrderType不是0，就执行降序，这句很重要！
+   end
+   else
+   begin
+    set @strOrder = ' order by ' + @fldName +' asc'
+   end
+   
+   set @strSQL = 'select top ' + str(@PageSize*@PageIndex) +' IDENTITY(INT,1,1) AS rowNum,' + @strGetFields + 
+   ' into #tmp from ' + @tblName + ' where 1=1 ' + @strWhere + ' ' + @strOrder
+	+';select * from #tmp where rowNum>'+str(@PageSize*(@PageIndex-1))
+END
+PRINT @strSQL
+exec (@strSQL)
+
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_getValidTestRoomCode]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_getValidTestRoomCode]
+GO
+-- =============================================
+-- Author:		刘晓明
+-- Create date: 2013-6-29
+-- Description:	通过登录人的单位ID，获取他所监理的所有实验室的code
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_getValidTestRoomCode] 
+	@id varchar(50),
+	@isAdmin INT
+AS
+BEGIN
+	DECLARE @ids VARCHAR(400)
+	IF @isAdmin=1
+	BEGIN
+		SELECT a.NodeCode FROM sys_engs_Tree a JOIN dbo.sys_engs_ItemInfo b
+		ON a.RalationID=b.ID
+	END
+	ELSE
+	BEGIN
+		
+		SELECT @ids=''''+REPLACE(ConstructionCompany,',',''',''')+'''' FROM dbo.sys_engs_CompanyInfo
+		where id=@id
+		IF @ids<>''''''
+		BEGIN
+			exec('select a.NodeCode from sys_engs_Tree a 
+			join (select NodeCode from sys_engs_Tree where RalationID in('+@ids+')) b on Left(a.NodeCode,12)=b.NodeCode
+			where len(a.NodeCode)=16')
+		END
+		ELSE
+		BEGIN
+			SELECT @ids=NodeCode FROM sys_engs_Tree WHERE RalationID=@id
+			SELECT NodeCode FROM dbo.sys_engs_Tree WHERE LEFT(NodeCode,12)=@ids AND LEN(NodeCode)=16
+		END
+			
+	END
+END
+GO
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_document_list]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_document_list]
+go
+create PROCEDURE sp_document_list
+	-- Add the parameters for the stored procedure here
+	@strGetFields nvarchar(3000) , -- 需要返回的列
+	@fldName varchar(255), -- 排序的字段名
+	@PageSize int , -- 页尺寸
+	@PageIndex int , -- 页码
+	@OrderType bit , -- 设置排序类型, 非0 值则降序
+	@strWhere varchar(6000),  -- 查询条件(注意: 不要加where)
+	@totalCount int output
+AS
+BEGIN
+	declare @strSQL nvarchar(4000) -- 主语句
+	declare @strOrder varchar(400) -- 排序类型
+	declare @ct int
+	if @OrderType != 0--降序
+	begin
+		set @strOrder = ' order by ' + @fldName +' desc'--如果@OrderType不是0，就执行降序，这句很重要！
+	end
+	else
+	begin
+		set @strOrder = ' order by ' + @fldName +' asc'
+	END
+	set @strSQL = 'select @a=count(1) from sys_document where 1=1 '+ @strWhere
+	
+	EXEC sp_executesql @strSQL,N'@a int output',@ct OUTPUT
+	set @totalCount=@ct
+	set @strSQL = 'select '+@strGetFields+' from sys_document a join (SELECT ID as k FROM (select ID,ROW_NUMBER() over('+@strOrder+') as r from sys_document where 1=1 ' + @strWhere + ') as t where r between ' +str(@PageSize*(@PageIndex-1)+1) +' and '++str(@PageSize*@PageIndex) +') tt on a.ID=tt.k '+@strOrder
+	PRINT @strSQL
+	exec (@strSQL)
+END
+GO
+
+CREATE FUNCTION [dbo].[Fweb_SplitExpression]
+    (
+      @ExpressionToBeSplited NVARCHAR(MAX) ,
+      @SplitChar CHAR(1)
+    )
+RETURNS @Result TABLE ( [Value] NVARCHAR(MAX) )
+AS 
+    BEGIN
+        DECLARE @Temp NVARCHAR(MAX)
+       
+        DECLARE @Index INT
+        SET @Index = CHARINDEX(@SplitChar, @ExpressionToBeSplited, 1)
+        WHILE ( @Index > 0 ) 
+            BEGIN
+                SELECT  @Temp = SUBSTRING(@ExpressionToBeSplited, 1,
+                                          @Index - 1) 
+                INSERT  INTO @Result
+                VALUES  ( @Temp )
+                SET @ExpressionToBeSplited = SUBSTRING(@ExpressionToBeSplited,
+                                                       @Index + 1,
+                                                       LEN(@ExpressionToBeSplited)
+                                                       - @Index)
+                SET @Index = CHARINDEX(@SplitChar, @ExpressionToBeSplited, 1)
+            END
+        IF ( LEN(@ExpressionToBeSplited) > 0 ) 
+            BEGIN
+    
+                INSERT  INTO @Result
+                        ( VALUE )
+                VALUES  ( @ExpressionToBeSplited )
+            END
+        
+        RETURN
+    END
+    GO
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_update_module]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_update_module]
+GO
+
+CREATE PROCEDURE [dbo].[sp_update_module] 
+AS
+BEGIN
+	set xact_abort on
+	BEGIN TRAN
+	--alter table [dbo].[sys_module_sheet]
+	--   drop constraint [FK_sys_module_sheet_sys_module]
+	--GO
+	--alter table [dbo].[sys_formulas]
+	--   drop constraint [FK_sys_formulas_sys_module]
+	--GO
+	
+	DELETE FROM dbo.sys_dictionary
+	DELETE FROM dbo.sys_formulas WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_formulas WHERE ID IN (SELECT ID FROM dbo.sys_formulas_update)
+	DELETE FROM dbo.sys_module_config WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_module_config WHERE ID IN (SELECT ID FROM dbo.sys_module_config_update)
+	DELETE FROM dbo.sys_module WHERE ID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_stadium_config WHERE ID IN (SELECT ID FROM dbo.sys_stadium_config_update)
+	
+	INSERT INTO dbo.sys_dictionary SELECT * FROM sys_dictionary_update      
+	INSERT INTO dbo.sys_module SELECT * FROM sys_module_update  
+	INSERT INTO dbo.sys_formulas SELECT * FROM sys_formulas_update
+	INSERT INTO dbo.sys_stadium_config SELECT * FROM dbo.sys_stadium_config_update
+	INSERT INTO dbo.sys_module_config SELECT * FROM dbo.sys_module_config_update
+	
+	DELETE FROM dbo.sys_dictionary_update
+	DELETE FROM dbo.sys_formulas_update
+	DELETE FROM dbo.sys_module_update
+	DELETE FROM dbo.sys_stadium_config_update
+	DELETE FROM dbo.sys_module_config_update
+	--删除多余数据
+	--DELETE FROM dbo.sys_module_sheet WHERE ModuleID NOT IN(SELECT ID FROM dbo.sys_module)
+	--DELETE FROM dbo.sys_formulas WHERE ModuleID NOT IN(SELECT ID FROM dbo.sys_module)
+	--添加约束
+	--ALTER TABLE [dbo].[sys_module_sheet]  WITH CHECK ADD  CONSTRAINT [FK_sys_module_sheet_sys_module] FOREIGN KEY([ModuleID])
+	--REFERENCES [dbo].[sys_module] ([ID])
+	--GO
+	--ALTER TABLE [dbo].[sys_module_sheet] CHECK CONSTRAINT [FK_sys_module_sheet_sys_module]
+	--GO
+	--ALTER TABLE [dbo].[sys_formulas]  WITH NOCHECK ADD  CONSTRAINT [FK_sys_formulas_sys_module] FOREIGN KEY([ModuleID])
+	--REFERENCES [dbo].[sys_module] ([ID])
+	--GO
+	--ALTER TABLE [dbo].[sys_formulas] CHECK CONSTRAINT [FK_sys_formulas_sys_module]
+	--GO
+	
+	IF @@error<>0
+	BEGIN
+		rollback tran 
+		return 0
+	END 
+	ELSE
+	BEGIN 
+		commit tran
+		return 1
+	END
+END
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_update_module_sheet]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_update_module_sheet]
+GO
+
+CREATE PROCEDURE [dbo].[sp_update_module_sheet] 
+AS
+BEGIN
+	set xact_abort on
+	BEGIN TRAN
+	--alter table [dbo].[sys_module_sheet]
+	--   drop constraint [FK_sys_module_sheet_sys_module]
+	--GO
+	--alter table [dbo].[sys_formulas]
+	--   drop constraint [FK_sys_formulas_sys_module]
+	--GO
+	DELETE FROM dbo.sys_dictionary
+	DELETE FROM dbo.sys_formulas WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_formulas WHERE ID IN (SELECT ID FROM dbo.sys_formulas_update)
+	DELETE FROM dbo.sys_module_sheet WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_module_sheet WHERE ID IN (SELECT ID FROM dbo.sys_module_sheet_update)
+	DELETE FROM dbo.sys_module_config WHERE ModuleID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_module_config WHERE ID IN (SELECT ID FROM dbo.sys_module_config_update)
+	DELETE FROM dbo.sys_module WHERE ID IN (SELECT ID FROM dbo.sys_module_update)
+	DELETE FROM dbo.sys_stadium_config WHERE ID IN (SELECT ID FROM dbo.sys_stadium_config_update)
+	
+	INSERT INTO dbo.sys_dictionary SELECT * FROM sys_dictionary_update      
+	INSERT INTO dbo.sys_module SELECT * FROM sys_module_update  
+	INSERT INTO dbo.sys_module_sheet SELECT * FROM dbo.sys_module_sheet_update
+	INSERT INTO dbo.sys_formulas SELECT * FROM sys_formulas_update
+	INSERT INTO dbo.sys_stadium_config SELECT * FROM dbo.sys_stadium_config_update
+	INSERT INTO dbo.sys_module_config SELECT * FROM dbo.sys_module_config_update
+	
+	DELETE FROM dbo.sys_dictionary_update
+	DELETE FROM dbo.sys_formulas_update
+	DELETE FROM dbo.sys_module_sheet_update
+	DELETE FROM dbo.sys_module_update
+	DELETE FROM dbo.sys_stadium_config_update
+	DELETE FROM dbo.sys_module_config_update
+	--删除多余数据
+	--DELETE FROM dbo.sys_module_sheet WHERE ModuleID NOT IN(SELECT ID FROM dbo.sys_module)
+	--DELETE FROM dbo.sys_formulas WHERE ModuleID NOT IN(SELECT ID FROM dbo.sys_module)
+	--添加约束
+	--ALTER TABLE [dbo].[sys_module_sheet]  WITH CHECK ADD  CONSTRAINT [FK_sys_module_sheet_sys_module] FOREIGN KEY([ModuleID])
+	--REFERENCES [dbo].[sys_module] ([ID])
+	--GO
+	--ALTER TABLE [dbo].[sys_module_sheet] CHECK CONSTRAINT [FK_sys_module_sheet_sys_module]
+	--GO
+	--ALTER TABLE [dbo].[sys_formulas]  WITH NOCHECK ADD  CONSTRAINT [FK_sys_formulas_sys_module] FOREIGN KEY([ModuleID])
+	--REFERENCES [dbo].[sys_module] ([ID])
+	--GO
+	--ALTER TABLE [dbo].[sys_formulas] CHECK CONSTRAINT [FK_sys_formulas_sys_module]
+	--GO
+
+
+	
+	IF @@error<>0
+	BEGIN
+		rollback tran 
+		return 0
+	END 
+	ELSE
+	BEGIN 
+		commit tran
+		return 1
+	END
+END
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id =object_id(N'[dbo].[sp_update_sheet]') and OBJECTPROPERTY(id, N'IsProcedure')= 1)
+-- 删除存储过程
+drop procedure [dbo].[sp_update_sheet]
+GO
+
+CREATE PROCEDURE [dbo].[sp_update_sheet]
+AS
+BEGIN
+	set xact_abort on
+	BEGIN TRAN
+	
+	DELETE FROM dbo.sys_sheet WHERE ID IN (SELECT ID FROM dbo.sys_sheet_update)
+	INSERT INTO dbo.sys_sheet SELECT * FROM sys_sheet_update
+	DELETE FROM dbo.sys_sheet_update
+	
+	IF @@error<>0
+	BEGIN
+		rollback tran 
+		return 0
+	END 
+	ELSE
+	BEGIN 
+		commit tran
+		return 1
+	END
+END
+GO
+
+CREATE PROCEDURE sp_getFormulas 
+	@moduleID UNIQUEIDENTIFIER
+AS
+BEGIN
+	
+	SELECT * INTO #tmp FROM (
+	SELECT *, 1 AS fromLine FROM dbo.sys_line_formulas WHERE IsActive=1 and ModuleID=@moduleID
+	UNION
+	SELECT *,0 AS fromLine FROM dbo.sys_formulas WHERE IsActive=1 AND ModuleID=@moduleID ) a
+
+	SELECT ModuleID,SheetID,RowIndex,ColumnIndex INTO #tmp2 FROM #tmp GROUP BY ModuleID,SheetID,RowIndex,ColumnIndex HAVING COUNT(1)>1
+
+	DELETE FROM #tmp
+	FROM #tmp a
+	JOIN #tmp2 b ON a.fromLine=0 AND a.ColumnIndex = b.ColumnIndex 
+	AND a.ModuleID = b.ModuleID AND a.RowIndex = b.RowIndex AND a.SheetID = b.SheetID
+
+	SELECT ModuleID,SheetID,RowIndex,ColumnIndex,Formula,fromLine FROM #tmp
+
+END
+GO

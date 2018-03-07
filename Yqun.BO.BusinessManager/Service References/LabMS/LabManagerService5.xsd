@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MixstationLibraryDMS.LabWCFService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MixstationLibraryDMS.LabWCFService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PressureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="F_COLCOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_GUID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_ISWJJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_KYLZ" type="xs:float" />
+      <xs:element minOccurs="0" name="F_LQ" type="xs:int" />
+      <xs:element minOccurs="0" name="F_OPERATOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_QDDJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_RTCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SBCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SJBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SJCC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SOFTCOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SYSJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_WTBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_YSKYLZ" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PressureData" nillable="true" type="tns:PressureData" />
+  <xs:complexType name="UniversalData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="F_AREA" type="xs:float" />
+      <xs:element minOccurs="0" name="F_COLCOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_GCZJ" type="xs:float" />
+      <xs:element minOccurs="0" name="F_GUID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_LZ" type="xs:float" />
+      <xs:element minOccurs="0" name="F_OPERATOR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_PZCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_QFLZ" type="xs:float" />
+      <xs:element minOccurs="0" name="F_RTCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SBCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SCL" type="xs:float" />
+      <xs:element minOccurs="0" name="F_SJBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SOFTCOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_SYSJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_WTBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_WY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_YSKLLZ" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UniversalData" nillable="true" type="tns:UniversalData" />
+  <xs:complexType name="LabDocBasicInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BGBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DBQUANTITY" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DBUNIT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_GUID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_VENDER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GGTYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISSUCCESS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JLBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NOSUCCESSINFO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRJNAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SBCODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SYDATE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SYJLX" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SYRERSON" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SYTYPE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WDMC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WTBH" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WTDW" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LabDocBasicInfo" nillable="true" type="tns:LabDocBasicInfo" />
+</xs:schema>

@@ -1,0 +1,36 @@
+﻿INSERT INTO dbo.sys_module
+                            ( ID ,
+                              Name ,
+                              Description ,
+                              CatlogCode ,
+                              ModuleSetting,
+                              CreatedUser ,
+                              CreatedTime ,
+                              LastEditedUser ,
+                              LastEditedTime ,
+                              IsActive
+                            )
+                    SELECT ID ,
+                    Description,Description,
+                            CatlogCode ,'','developer',SCTS ,'developer',SCTS ,1 FROM dbo.sys_biz_Module
+                    WHERE Scdel=0
+                    
+                    
+
+INSERT INTO dbo.sys_sheet
+                ( ID ,
+                  Name ,
+                  CatlogCode ,
+                  SheetXML ,
+                  SheetData ,
+                  CreatedUser ,
+                  CreatedTime ,
+                  LastEditedUser ,
+                  LasteditedTime ,
+                  IsActive
+                )
+            SELECT ID ,  Description ,CatlogCode ,SheetStyle ,
+                    '' ,'developer',SCTS,'developer',SCTS,1 FROM dbo.sys_biz_Sheet
+
+
+        

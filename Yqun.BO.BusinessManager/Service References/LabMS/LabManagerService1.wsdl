@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="LabManagerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_ILabManagerService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MixstationLibraryDMS.LabWCFService" />
+      <xsd:import schemaLocation="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd3" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILabManagerService_UploadPressureData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPressureData" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadPressureData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPressureDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadUniversalData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadUniversalData" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadUniversalData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadUniversalDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocBasicInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocBasicInfo" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocBasicInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocBasicInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocContent" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_AuthentificationUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationUser" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_AuthentificationUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadPressureDataDES_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPressureDataDES" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadPressureDataDES_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadPressureDataDESResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadUniversalDataDES_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadUniversalDataDES" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadUniversalDataDES_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadUniversalDataDESResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocBasicInfoDES_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocBasicInfoDES" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocBasicInfoDES_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocBasicInfoDESResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocContentDES_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocContentDES" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabDocContentDES_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabDocContentDESResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_AuthentificationFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationFile" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_AuthentificationFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthentificationFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabMessageWeb_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabMessageWeb" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabMessageWeb_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabMessageWebResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabStatus" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UploadLabStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadLabStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_GetVenderCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderCount" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_GetVenderCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenderCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UpdateJgdmStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJgdmStatus" />
+  </wsdl:message>
+  <wsdl:message name="ILabManagerService_UpdateJgdmStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJgdmStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILabManagerService">
+    <wsdl:operation name="UploadPressureData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadPressureData" message="tns:ILabManagerService_UploadPressureData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadPressureDataResponse" message="tns:ILabManagerService_UploadPressureData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadUniversalData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadUniversalData" message="tns:ILabManagerService_UploadUniversalData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadUniversalDataResponse" message="tns:ILabManagerService_UploadUniversalData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocBasicInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfo" message="tns:ILabManagerService_UploadLabDocBasicInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfoResponse" message="tns:ILabManagerService_UploadLabDocBasicInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocContent">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocContent" message="tns:ILabManagerService_UploadLabDocContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocContentResponse" message="tns:ILabManagerService_UploadLabDocContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/AuthentificationUser" message="tns:ILabManagerService_AuthentificationUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/AuthentificationUserResponse" message="tns:ILabManagerService_AuthentificationUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadPressureDataDES">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadPressureDataDES" message="tns:ILabManagerService_UploadPressureDataDES_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadPressureDataDESResponse" message="tns:ILabManagerService_UploadPressureDataDES_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadUniversalDataDES">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadUniversalDataDES" message="tns:ILabManagerService_UploadUniversalDataDES_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadUniversalDataDESResponse" message="tns:ILabManagerService_UploadUniversalDataDES_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocBasicInfoDES">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfoDES" message="tns:ILabManagerService_UploadLabDocBasicInfoDES_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfoDESResponse" message="tns:ILabManagerService_UploadLabDocBasicInfoDES_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocContentDES">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocContentDES" message="tns:ILabManagerService_UploadLabDocContentDES_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabDocContentDESResponse" message="tns:ILabManagerService_UploadLabDocContentDES_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/AuthentificationFile" message="tns:ILabManagerService_AuthentificationFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/AuthentificationFileResponse" message="tns:ILabManagerService_AuthentificationFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabMessage" message="tns:ILabManagerService_UploadLabMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabMessageResponse" message="tns:ILabManagerService_UploadLabMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabMessageWeb">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabMessageWeb" message="tns:ILabManagerService_UploadLabMessageWeb_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabMessageWebResponse" message="tns:ILabManagerService_UploadLabMessageWeb_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabStatus" message="tns:ILabManagerService_UploadLabStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UploadLabStatusResponse" message="tns:ILabManagerService_UploadLabStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/GetVenderCount" message="tns:ILabManagerService_GetVenderCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/GetVenderCountResponse" message="tns:ILabManagerService_GetVenderCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJgdmStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILabManagerService/UpdateJgdmStatus" message="tns:ILabManagerService_UpdateJgdmStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILabManagerService/UpdateJgdmStatusResponse" message="tns:ILabManagerService_UpdateJgdmStatus_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_ILabManagerService" type="tns:ILabManagerService">
+    <wsp:PolicyReference URI="#WSHttpBinding_ILabManagerService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadPressureData">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadPressureData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadUniversalData">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadUniversalData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocBasicInfo">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocContent">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabDocContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationUser">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/AuthentificationUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadPressureDataDES">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadPressureDataDES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadUniversalDataDES">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadUniversalDataDES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocBasicInfoDES">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabDocBasicInfoDES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabDocContentDES">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabDocContentDES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthentificationFile">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/AuthentificationFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabMessageWeb">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabMessageWeb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadLabStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UploadLabStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVenderCount">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/GetVenderCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJgdmStatus">
+      <soap12:operation soapAction="http://tempuri.org/ILabManagerService/UpdateJgdmStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LabManagerService">
+    <wsdl:port name="WSHttpBinding_ILabManagerService" binding="tns:WSHttpBinding_ILabManagerService">
+      <soap12:address location="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

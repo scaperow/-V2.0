@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="WebTransferService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="WebTransferService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="WebTransferService">
+      <s:element name="GetSuperscalarCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSuperscalarCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSuperscalarCountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapacityAnalysis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MachineCodes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CapacityAnalysisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CapacityAnalysisResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBhzPanDetailChuLiYiJian">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PanID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChuLiYiJian" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBhzPanDetailChuLiYiJianResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBhzPanDetailChuLiYiJianResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzPanDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PanID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzPanDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzPanDetailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuperscalarSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastRowNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JiaoZhuBuWei" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ChaoBiaoDengJi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MachineCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuperscalarSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperscalarSearchResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzLineStatics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MachineCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzLineStaticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzLineStaticsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzIng">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzIngResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzIngResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzJLCompanyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzJLCompanyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzJLCompanyListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzSGCompanyList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JLID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzSGCompanyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzSGCompanyListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzStationList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzStationListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzStationListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzMachineList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StationID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzMachineListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzMachineListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzMachineListWithFullName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JLID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzMachineListWithFullNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzMachineListWithFullNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLoginLogList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastRowNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLoginLogListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzUserLoginLogListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLoginLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LastRowNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLoginLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzUserLoginLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBhzUserLastLine">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateBhzUserLastLineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateBhzUserLastLineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBhzLoginLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddBhzLoginLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddBhzLoginLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSysUserLineList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSysUserLineListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSysUserLineListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginSys">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginSysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginSysResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLineList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBhzUserLineListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBhzUserLineListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginBhz">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AuthPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginBhzResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginBhzResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetSuperscalarCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSuperscalarCount" />
+  </wsdl:message>
+  <wsdl:message name="GetSuperscalarCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSuperscalarCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="CapacityAnalysisSoapIn">
+    <wsdl:part name="parameters" element="tns:CapacityAnalysis" />
+  </wsdl:message>
+  <wsdl:message name="CapacityAnalysisSoapOut">
+    <wsdl:part name="parameters" element="tns:CapacityAnalysisResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBhzPanDetailChuLiYiJianSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBhzPanDetailChuLiYiJian" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBhzPanDetailChuLiYiJianSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBhzPanDetailChuLiYiJianResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzPanDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzPanDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzPanDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzPanDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperscalarSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:SuperscalarSearch" />
+  </wsdl:message>
+  <wsdl:message name="SuperscalarSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:SuperscalarSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzLineStaticsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzLineStatics" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzLineStaticsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzLineStaticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzIngSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzIng" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzIngSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzIngResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzJLCompanyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzJLCompanyList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzJLCompanyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzJLCompanyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzSGCompanyListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzSGCompanyList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzSGCompanyListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzSGCompanyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzStationListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzStationList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzStationListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzStationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzMachineListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzMachineList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzMachineListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzMachineListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzMachineListWithFullNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzMachineListWithFullName" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzMachineListWithFullNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzMachineListWithFullNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLoginLogListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLoginLogList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLoginLogListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLoginLogListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLoginLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLoginLog" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLoginLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLoginLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBhzUserLastLineSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateBhzUserLastLine" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBhzUserLastLineSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateBhzUserLastLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddBhzLoginLogSoapIn">
+    <wsdl:part name="parameters" element="tns:AddBhzLoginLog" />
+  </wsdl:message>
+  <wsdl:message name="AddBhzLoginLogSoapOut">
+    <wsdl:part name="parameters" element="tns:AddBhzLoginLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSysUserLineListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSysUserLineList" />
+  </wsdl:message>
+  <wsdl:message name="GetSysUserLineListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSysUserLineListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSysSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginSys" />
+  </wsdl:message>
+  <wsdl:message name="LoginSysSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginSysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLineListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLineList" />
+  </wsdl:message>
+  <wsdl:message name="GetBhzUserLineListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBhzUserLineListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginBhzSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginBhz" />
+  </wsdl:message>
+  <wsdl:message name="LoginBhzSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginBhzResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MobileServiceSoap">
+    <wsdl:operation name="GetSuperscalarCount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询最新超标数量;参数：LineID(线路ID),LastDate(最后获取时间);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1查询最新超标数量</wsdl:documentation>
+      <wsdl:input message="tns:GetSuperscalarCountSoapIn" />
+      <wsdl:output message="tns:GetSuperscalarCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CapacityAnalysis">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">产能分析;参数：LineID(线路ID),MachineCodes(机器编码,多个以英文的,分隔),StartDate(开始时间),EndDate(结束时间),PageSize(页大小),PageIndex(页序),FType(查询类型:周1，月2，季度3),ResultFlag：-2线路不存在,-1授权失败,0异常错误,1产能分析结果</wsdl:documentation>
+      <wsdl:input message="tns:CapacityAnalysisSoapIn" />
+      <wsdl:output message="tns:CapacityAnalysisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzPanDetailChuLiYiJian">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新拌合站超标详细的处理结果;参数：LineID(线路ID),PanID(超标详细ID),ChuLiYiJian(处理结果);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1操作成功</wsdl:documentation>
+      <wsdl:input message="tns:UpdateBhzPanDetailChuLiYiJianSoapIn" />
+      <wsdl:output message="tns:UpdateBhzPanDetailChuLiYiJianSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzPanDetail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取超标详细;参数：LineID(线路ID),PanID(超标详细ID);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1获取超标详细</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzPanDetailSoapIn" />
+      <wsdl:output message="tns:GetBhzPanDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SuperscalarSearch">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">超标查询;参数：LineID(线路ID),UserName(用户名),PageSize(页大小),LastRowNum(最后的行号,最开始为0),StartDate(开始时间),EndDate(结束时间),ProjectName(工程名称),JiaoZhuBuWei(浇筑部位),ChaoBiaoDengJi(超标等级:低级1,中级2,高级3;也可以组合起来如:1,2),MachineCode(机器编码,以英文,分隔);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1超标查询结果</wsdl:documentation>
+      <wsdl:input message="tns:SuperscalarSearchSoapIn" />
+      <wsdl:output message="tns:SuperscalarSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzLineStatics">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">线路概况;参数：LineID(线路ID),StartDate(开始时间),EndDate(结束时间),MachineCode(机器编码,以英文,分隔);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1线路概况结果</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzLineStaticsSoapIn" />
+      <wsdl:output message="tns:GetBhzLineStaticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzIng">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站动态汇总展示;参数：LineID(线路ID);UserName(用户名);TestCode(机器编码,多个以英文的,分隔);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1动态汇总</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzIngSoapIn" />
+      <wsdl:output message="tns:GetBhzIngSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzJLCompanyList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取监理单位列表;参数：LineID(线路ID);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1获取监理单位列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzJLCompanyListSoapIn" />
+      <wsdl:output message="tns:GetBhzJLCompanyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzSGCompanyList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取施工单位列表;参数：LineID(线路ID);JLID(监理ID);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1获取施工单位列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzSGCompanyListSoapIn" />
+      <wsdl:output message="tns:GetBhzSGCompanyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzStationList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站列表;参数：LineID(线路ID);CompanyID(施工单位ID);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1获取拌合站列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzStationListSoapIn" />
+      <wsdl:output message="tns:GetBhzStationListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站机器列表;参数：LineID(线路ID);StationID(拌合站ID);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1获取拌合站列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzMachineListSoapIn" />
+      <wsdl:output message="tns:GetBhzMachineListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineListWithFullName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站带机器全部名称的列表;参数：LineID(线路ID);JLID(监理ID);TestCode(用户所拥有的机器编码);ResultFlag：-3没有获取到汇总展示,-2线路不存在,-1授权失败,0异常错误,1获取拌合站列表</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzMachineListWithFullNameSoapIn" />
+      <wsdl:output message="tns:GetBhzMachineListWithFullNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLogList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站用户登录日志清单;参数：LineID(线路ID),UserName(用户名),PageSize(页大小),LastRowNum(最后的行号,最开始为0),StartDate(开始时间),EndDate(结束时间);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1获取拌合站用户登录日志清单</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzUserLoginLogListSoapIn" />
+      <wsdl:output message="tns:GetBhzUserLoginLogListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站用户登录日志统计;参数：LineID(线路ID),PageSize(页大小),LastRowNum(最后的行号,最开始为0);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1获取拌合站用户登录日志</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzUserLoginLogSoapIn" />
+      <wsdl:output message="tns:GetBhzUserLoginLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站用户信息;参数：LineID(线路ID);UserName(用户名);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1用户信息</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzUserInfoSoapIn" />
+      <wsdl:output message="tns:GetBhzUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzUserLastLine">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新拌合站用户最后选择的线路;参数：UserName(用户名),TestCode(试验室编码),LineID(线路ID),Description(线路名字);ResultFlag：-2线路不存在,-1授权失败,0异常错误,1操作成功</wsdl:documentation>
+      <wsdl:input message="tns:UpdateBhzUserLastLineSoapIn" />
+      <wsdl:output message="tns:UpdateBhzUserLastLineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBhzLoginLog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">添加拌合站登录日志;参数：UserName(用户名),TestCode(试验室编码),LineID(线路ID);ResultFlag：-3操作日志添加失败,-2线路不存在,-1授权失败,0异常错误,1操作成功</wsdl:documentation>
+      <wsdl:input message="tns:AddBhzLoginLogSoapIn" />
+      <wsdl:output message="tns:AddBhzLoginLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSysUserLineList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取试验室管理系统用户可以操作的线路信息;参数：UserName(用户名);ResultFlag：-1授权失败,0异常错误,1用户能访问的所有线路信息</wsdl:documentation>
+      <wsdl:input message="tns:GetSysUserLineListSoapIn" />
+      <wsdl:output message="tns:GetSysUserLineListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginSys">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">登录试验室管理系统;ResultFlag：-1授权失败,-2用户名密码错误,-3没有访问任何线路的权限,0异常错误,1登录成功并返回用户最后查看线路ID,2没有默认线路返回用户能访问的所有线路信息</wsdl:documentation>
+      <wsdl:input message="tns:LoginSysSoapIn" />
+      <wsdl:output message="tns:LoginSysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLineList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取拌合站用户可以操作的线路信息;参数：UserName(用户名);ResultFlag：-1授权失败,0异常错误,1用户能访问的所有线路信息</wsdl:documentation>
+      <wsdl:input message="tns:GetBhzUserLineListSoapIn" />
+      <wsdl:output message="tns:GetBhzUserLineListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginBhz">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">登录拌合站;ResultFlag：-1授权失败,-2用户名密码错误,-3没有访问任何线路的权限,0异常错误,1登录成功并返回用户最后查看线路ID,2没有默认线路返回用户能访问的所有线路信息</wsdl:documentation>
+      <wsdl:input message="tns:LoginBhzSoapIn" />
+      <wsdl:output message="tns:LoginBhzSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobileServiceSoap" type="tns:MobileServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSuperscalarCount">
+      <soap:operation soapAction="WebTransferService/GetSuperscalarCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapacityAnalysis">
+      <soap:operation soapAction="WebTransferService/CapacityAnalysis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzPanDetailChuLiYiJian">
+      <soap:operation soapAction="WebTransferService/UpdateBhzPanDetailChuLiYiJian" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzPanDetail">
+      <soap:operation soapAction="WebTransferService/GetBhzPanDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuperscalarSearch">
+      <soap:operation soapAction="WebTransferService/SuperscalarSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzLineStatics">
+      <soap:operation soapAction="WebTransferService/GetBhzLineStatics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzIng">
+      <soap:operation soapAction="WebTransferService/GetBhzIng" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzJLCompanyList">
+      <soap:operation soapAction="WebTransferService/GetBhzJLCompanyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzSGCompanyList">
+      <soap:operation soapAction="WebTransferService/GetBhzSGCompanyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzStationList">
+      <soap:operation soapAction="WebTransferService/GetBhzStationList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineList">
+      <soap:operation soapAction="WebTransferService/GetBhzMachineList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineListWithFullName">
+      <soap:operation soapAction="WebTransferService/GetBhzMachineListWithFullName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLogList">
+      <soap:operation soapAction="WebTransferService/GetBhzUserLoginLogList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLog">
+      <soap:operation soapAction="WebTransferService/GetBhzUserLoginLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserInfo">
+      <soap:operation soapAction="WebTransferService/GetBhzUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzUserLastLine">
+      <soap:operation soapAction="WebTransferService/UpdateBhzUserLastLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBhzLoginLog">
+      <soap:operation soapAction="WebTransferService/AddBhzLoginLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSysUserLineList">
+      <soap:operation soapAction="WebTransferService/GetSysUserLineList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginSys">
+      <soap:operation soapAction="WebTransferService/LoginSys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLineList">
+      <soap:operation soapAction="WebTransferService/GetBhzUserLineList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginBhz">
+      <soap:operation soapAction="WebTransferService/LoginBhz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MobileServiceSoap12" type="tns:MobileServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSuperscalarCount">
+      <soap12:operation soapAction="WebTransferService/GetSuperscalarCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CapacityAnalysis">
+      <soap12:operation soapAction="WebTransferService/CapacityAnalysis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzPanDetailChuLiYiJian">
+      <soap12:operation soapAction="WebTransferService/UpdateBhzPanDetailChuLiYiJian" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzPanDetail">
+      <soap12:operation soapAction="WebTransferService/GetBhzPanDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuperscalarSearch">
+      <soap12:operation soapAction="WebTransferService/SuperscalarSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzLineStatics">
+      <soap12:operation soapAction="WebTransferService/GetBhzLineStatics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzIng">
+      <soap12:operation soapAction="WebTransferService/GetBhzIng" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzJLCompanyList">
+      <soap12:operation soapAction="WebTransferService/GetBhzJLCompanyList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzSGCompanyList">
+      <soap12:operation soapAction="WebTransferService/GetBhzSGCompanyList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzStationList">
+      <soap12:operation soapAction="WebTransferService/GetBhzStationList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineList">
+      <soap12:operation soapAction="WebTransferService/GetBhzMachineList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzMachineListWithFullName">
+      <soap12:operation soapAction="WebTransferService/GetBhzMachineListWithFullName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLogList">
+      <soap12:operation soapAction="WebTransferService/GetBhzUserLoginLogList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLoginLog">
+      <soap12:operation soapAction="WebTransferService/GetBhzUserLoginLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserInfo">
+      <soap12:operation soapAction="WebTransferService/GetBhzUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBhzUserLastLine">
+      <soap12:operation soapAction="WebTransferService/UpdateBhzUserLastLine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBhzLoginLog">
+      <soap12:operation soapAction="WebTransferService/AddBhzLoginLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSysUserLineList">
+      <soap12:operation soapAction="WebTransferService/GetSysUserLineList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginSys">
+      <soap12:operation soapAction="WebTransferService/LoginSys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBhzUserLineList">
+      <soap12:operation soapAction="WebTransferService/GetBhzUserLineList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginBhz">
+      <soap12:operation soapAction="WebTransferService/LoginBhz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobileService">
+    <wsdl:port name="MobileServiceSoap" binding="tns:MobileServiceSoap">
+      <soap:address location="http://localhost:55451/MobileService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MobileServiceSoap12" binding="tns:MobileServiceSoap12">
+      <soap12:address location="http://localhost:55451/MobileService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a9583010-d034-4563-8b9b-59562221a533" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.railwaycmpl.com/DataIntService/DataInterface.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataInterface.xsd" MetadataType="Schema" ID="6d1d4ca7-7abc-4a5b-98a1-36280534e97e" SourceId="1" SourceUrl="http://www.railwaycmpl.com/DataIntService/DataInterface.svc?xsd=xsd0" />
+    <MetadataFile FileName="DataInterface1.xsd" MetadataType="Schema" ID="221c6a40-d71d-4891-8c9d-b73c9479e9b3" SourceId="1" SourceUrl="http://www.railwaycmpl.com/DataIntService/DataInterface.svc?xsd=xsd2" />
+    <MetadataFile FileName="DataInterface.wsdl" MetadataType="Wsdl" ID="6651986d-5d1d-4869-9c82-6e543f879493" SourceId="1" SourceUrl="http://www.railwaycmpl.com/DataIntService/DataInterface.svc?wsdl" />
+    <MetadataFile FileName="DataInterface2.xsd" MetadataType="Schema" ID="4cbee7ec-18ef-4658-a11e-c63683f6888f" SourceId="1" SourceUrl="http://www.railwaycmpl.com/DataIntService/DataInterface.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DataInterfaceSln" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataInterfaceSln" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PressureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FIswjj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FKylz" type="xs:double" />
+      <xs:element minOccurs="0" name="FLq" type="xs:int" />
+      <xs:element minOccurs="0" name="FOperator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FQddj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FRtcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSbbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSjbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSjcc" type="xs:int" />
+      <xs:element minOccurs="0" name="FSoftcom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSysj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FVender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FWtbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FYskylz" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PressureData" nillable="true" type="tns:PressureData" />
+  <xs:complexType name="UniversalData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FArea" type="xs:double" />
+      <xs:element minOccurs="0" name="FGczj" type="xs:double" />
+      <xs:element minOccurs="0" name="FGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FLz" type="xs:double" />
+      <xs:element minOccurs="0" name="FOperator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FPzcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FQflz" type="xs:double" />
+      <xs:element minOccurs="0" name="FRtcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSbbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FScl" type="xs:double" />
+      <xs:element minOccurs="0" name="FSjbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSoftcom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSysj" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FVender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FWtbh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FWy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FYskllz" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UniversalData" nillable="true" type="tns:UniversalData" />
+  <xs:complexType name="MixmachineData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FBaocunshijian" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FBhjcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FCaozuozhe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FChuliaoshijian" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FFangliang" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenliao5Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenliao5Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenliao6Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenliao6Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenmeihuiLilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FFenmeihuiShijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FGongchengmingcheng" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FGongdanhao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FJiaobanshijian" type="xs:int" />
+      <xs:element minOccurs="0" name="FJiaozhubuwei" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FKehuduanbianhao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FKuangfenLilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FKuangfenShijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FPeifanghao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FQiangdudengji" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FSha1Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FSha1Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FSha2Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FSha2Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShejifangliang" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi1Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi1Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi2Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi2Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi3Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShi3Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShigongdidian" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FShui1Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShui1Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShui2Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShui2Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShuini1Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShuini1Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShuini2Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShuini2Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FShuinipinzhong" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FVender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FWaijiaji1Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji1Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji2Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji2Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji3Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji3Shijizhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji4Lilunzhi" type="xs:float" />
+      <xs:element minOccurs="0" name="FWaijiaji4Shijizhi" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MixmachineData" nillable="true" type="tns:MixmachineData" />
+</xs:schema>

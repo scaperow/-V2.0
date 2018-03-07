@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6b2975b2-ac73-48a5-aece-1050598d371e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.railwaycmpl.com:1618/LabManagerAll/GetDataInterval.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GetDataInterval.xsd" MetadataType="Schema" ID="9cfb7cee-f3f3-4367-b3a0-a8496f714893" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/GetDataInterval.svc?xsd=xsd1" />
+    <MetadataFile FileName="GetDataInterval1.xsd" MetadataType="Schema" ID="1c8fb5de-74fa-4b8e-bab5-d518c108209c" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/GetDataInterval.svc?xsd=xsd0" />
+    <MetadataFile FileName="GetDataInterval.wsdl" MetadataType="Wsdl" ID="ba63d8f6-620b-406a-b097-f260cf672cf1" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/GetDataInterval.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

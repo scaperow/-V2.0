@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BizModules.BizWindow" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBIoAgJACeAKIIQQAgCEAAACECAQAAEiAAIMFAKgAgg=</HashCode>
+      <FileName>BizWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.JZApplicationCatch" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JZApplicationCatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.JZModuleCatch" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAABAACCAAAAAAAAAAACAAACAAAAAAAAAAA=</HashCode>
+      <FileName>JZModuleCatch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.BizViewerContent" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAACAAAAAAAACAAAACAgAAAAAAAAAAAAEAAAQ=</HashCode>
+      <FileName>UIWindow\BizViewerContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ModelCatlogContent" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMAABAAACAAAAAACACAAEAiAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UIWindow\ModelCatlogContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ProjectCatlogContent" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAxDmEEFAWgBwCAGgAKg5gYiREUBmCNgKjgJALp5BBQ=</HashCode>
+      <FileName>UIWindow\ProjectCatlogContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.QueryDataContent" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAATAAIACAAAAAAAAACAAAQAQAAQ=</HashCode>
+      <FileName>UIWindow\QueryDataContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.CellStyleSetting" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABBAAACAACACAAAgBAAQAAAEAQAAAAQ=</HashCode>
+      <FileName>表单设计器\CellStyleSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.CellStyleShowDialog" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQBAAAACACAACAAAABAIAMAIAAAACAAA=</HashCode>
+      <FileName>表单设计器\CellStyleShowDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.DataItemsViewDialog" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAiAAQBAAABCALACCACAABAIAMAYAAAAAABA=</HashCode>
+      <FileName>表单设计器\DataItemsViewDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ModelDesigner" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAwgACABgwAA4ACBEABWAEBDCABIAAAAAiMAAAA=</HashCode>
+      <FileName>表单设计器\ModelDesigner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.PropertiesDialog" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAACACAAAAAAAQCAAAAQAAAAQ=</HashCode>
+      <FileName>表单设计器\PropertiesDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ReadWriteFunctionDialog" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAQAKAAAACBAAAAAAAABAAAAAgJAA=</HashCode>
+      <FileName>表单设计器\ReadWriteFunctionDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ReferenceSheetDialog" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAAAAAECAAAAAAAASACAASAAQZAQAAAGAAAAAAAAA=</HashCode>
+      <FileName>表单设计器\ReferenceSheetDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.SheetDataItemDialog" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAAAAAACAAAACAAAABIAAMCZAAAAAABA=</HashCode>
+      <FileName>表单设计器\SheetDataItemDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.SheetDesinger" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAkBACAHkwAAQBDRABQWFGACCQAACMEIEAJKEAA=</HashCode>
+      <FileName>表单设计器\SheetDesinger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ClearValueAction" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>表单运行时\ClearValueAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.HyperLinkSettingDialog" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACABAAAADgAAACAAAAQBAAAKQAAAIAAAA=</HashCode>
+      <FileName>表单运行时\HyperLinkSettingDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ModuleViewer" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIIBIQkAEGAGkAYSQFCJEAAaAIKKIIJAaABIAIoUCBA=</HashCode>
+      <FileName>表单运行时\ModuleViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.QualificationAuthForm" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACABAAAACAAAECBAAABAAAgEAAAQAAAAA=</HashCode>
+      <FileName>表单运行时\QualificationAuthForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.SupervisionReportViewer" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEEBACAAIAAAwFCgAAACAEAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>表单运行时\SupervisionReportViewer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ReadFuncControl" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgCAAACABAAAAAASACAAiAAAAAAAAIAAAAAAAAgg=</HashCode>
+      <FileName>读写函数面板\ReadFuncControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.WriteFuncControl" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAACAQIAAAAACAAAACAAAAAAQBIAAAQAAAAAg=</HashCode>
+      <FileName>读写函数面板\WriteFuncControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.DataViewControl" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GgIDY0tECSdDhESWUNWRUwTmQLMLAeBDdDGcy6OggAE=</HashCode>
+      <FileName>显示面板\DataViewControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ExtentDataItemChangedEventArgs" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAIAAACAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>显示面板\DataViewControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.ModelControl" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiImoDQEOAUIWASCASCxRoCUAMYAABABUQAITBShIg=</HashCode>
+      <FileName>资源面板\ModelControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.SheetControl" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEYGAAACCUAAGACAoCgjIACSQQABIIAABAABEABAAA=</HashCode>
+      <FileName>资源面板\SheetControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.Properties.Resources" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAIoABBMAEyBEOIAAYICAIABAAgQAAAgIYg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BizModules.UIWindow.DataIDShowForm" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAKAAACAAAACAAAICAAAAAAAACABAAAAAAAA=</HashCode>
+      <FileName>UIWindow\DataIDShowForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

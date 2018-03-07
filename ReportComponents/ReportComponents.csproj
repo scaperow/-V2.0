@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0A9F3022-0767-4FCE-A7A6-35DD88FF6E98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReportComponents</RootNamespace>
+    <AssemblyName>ReportComponents</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BizCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\BizCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="BizComponents, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\BizComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="Com.Windows.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Com.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ComboTree, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\ComboTree.dll</HintPath>
+    </Reference>
+    <Reference Include="DockingWindow, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\DockingWindow.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.CalcEngine, Version=4.0.2011.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.CalcEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Excel, Version=4.0.2011.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL" />
+    <Reference Include="FarPoint.SpreadWrapper, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.SpreadWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread.Design, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.Spread.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.TextRenderer, Version=4.0.2000.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.TextRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="IS.DNS.WinUI.DataExpress, Version=3.0.0.1, Culture=neutral, PublicKeyToken=64a6e8d4b7341562, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\IS.DNS.WinUI.DataExpress.dll</HintPath>
+    </Reference>
+    <Reference Include="IS.DNS.WinUI.DataExpress.Common, Version=3.0.0.1, Culture=neutral, PublicKeyToken=64a6e8d4b7341562, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\IS.DNS.WinUI.DataExpress.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IS.DNS.WinUI.DataExpress.Editors, Version=3.0.0.1, Culture=neutral, PublicKeyToken=64a6e8d4b7341562, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\IS.DNS.WinUI.DataExpress.Editors.dll</HintPath>
+    </Reference>
+    <Reference Include="IS.DNS.WinUI.DataExpress.Grid, Version=3.0.0.1, Culture=neutral, PublicKeyToken=64a6e8d4b7341562, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\IS.DNS.WinUI.DataExpress.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="IS.DNS.WinUI.Wizard, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\IS.DNS.WinUI.Wizard.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\ReportCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yqun.Bases, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Client.BizUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Client.BizUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.ContextCache, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.ContextCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.Encoder, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.Encoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.Split, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.Split.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Controls.CollapsibleSplitter, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Controls.CollapsibleSplitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.DropDownPanel, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.DropDownPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Services.Agent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Services.Agent.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="报表常规类\DepositoryDataTable.cs" />
+    <Compile Include="报表常规类\DepositoryRepairSheetConfiguration.cs" />
+    <Compile Include="报表常规类\DepositoryReportCatlog.cs" />
+    <Compile Include="报表常规类\DepositoryReportFormat.cs" />
+    <Compile Include="报表常规类\DepositoryParameter.cs" />
+    <Compile Include="报表常规类\FrontDataAdapter.cs" />
+    <Compile Include="设计器模型\编辑框\ColumnOrderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ColumnOrderDialog.Designer.cs">
+      <DependentUpon>ColumnOrderDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\CustomDataTableDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\CustomDataTableDialog.Designer.cs">
+      <DependentUpon>CustomDataTableDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\DataFieldSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\DataFieldSelector.Designer.cs">
+      <DependentUpon>DataFieldSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\EditColumnDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\EditColumnDialog.Designer.cs">
+      <DependentUpon>EditColumnDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\VariableEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\VariableEditor.Designer.cs">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\TableDataFilterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\TableDataFilterDialog.Designer.cs">
+      <DependentUpon>TableDataFilterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ConstantDataTableDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ConstantDataTableDialog.Designer.cs">
+      <DependentUpon>ConstantDataTableDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PageElementDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PageElementDialog.Designer.cs">
+      <DependentUpon>PageElementDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ParameterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ParameterDialog.designer.cs">
+      <DependentUpon>ParameterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\FormatStyleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\FormatStyleForm.Designer.cs">
+      <DependentUpon>FormatStyleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PreviewDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PreviewDataDialog.Designer.cs">
+      <DependentUpon>PreviewDataDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PrintInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\PrintInfoDialog.designer.cs">
+      <DependentUpon>PrintInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件\FpSpreadEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="控件\FpSpreadEx.Designer.cs">
+      <DependentUpon>FpSpreadEx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件\SimpleFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件\SimpleFilterControl.Designer.cs">
+      <DependentUpon>SimpleFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\DataColumnEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\DataColumnEditor.Designer.cs">
+      <DependentUpon>DataColumnEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件\NumberControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件\NumberControl.Designer.cs">
+      <DependentUpon>NumberControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件\CoordControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件\CoordControl.designer.cs">
+      <DependentUpon>CoordControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="控件\FilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="控件\FilterControl.designer.cs">
+      <DependentUpon>FilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="设计器模型\编辑框\CustomDataTableDialog.resx">
+      <DependentUpon>CustomDataTableDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\DataFieldSelector.resx">
+      <DependentUpon>DataFieldSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\EditColumnDialog.resx">
+      <DependentUpon>EditColumnDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\TableDataFilterDialog.resx">
+      <DependentUpon>TableDataFilterDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ConstantDataTableDialog.resx">
+      <DependentUpon>ConstantDataTableDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\PageElementDialog.resx">
+      <DependentUpon>PageElementDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ParameterDialog.resx">
+      <DependentUpon>ParameterDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\FormatStyleForm.resx">
+      <DependentUpon>FormatStyleForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\PreviewDataDialog.resx">
+      <DependentUpon>PreviewDataDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\PrintInfoDialog.resx">
+      <DependentUpon>PrintInfoDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件\FpSpreadEx.resx">
+      <DependentUpon>FpSpreadEx.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件\SimpleFilterControl.resx">
+      <DependentUpon>SimpleFilterControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\DataColumnEditor.resx">
+      <DependentUpon>DataColumnEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\NoteDialog.resx">
+      <DependentUpon>NoteDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件\CoordControl.resx">
+      <DependentUpon>CoordControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件\NumberControl.resx">
+      <DependentUpon>NumberControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="控件\FilterControl.resx">
+      <DependentUpon>FilterControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ImageEditor.resx">
+      <DependentUpon>ImageEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\ReportWindow.resx">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\SlashEditor.resx">
+      <DependentUpon>SlashEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ReportDesignUI.resx">
+      <DependentUpon>ReportDesignUI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\DataTableDialog.resx">
+      <DependentUpon>DataTableDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\UIWindow\DataSourceForm.resx">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\UIWindow\ExpandForm.resx">
+      <DependentUpon>ExpandForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\UIWindow\ReportCatlogForm.resx">
+      <DependentUpon>ReportCatlogForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\UIWindow\ReportDesignForm.resx">
+      <DependentUpon>ReportDesignForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运行时模型\EntireLineReportDialog.resx">
+      <DependentUpon>EntireLineReportDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运行时模型\TestRoomReportDialog.resx">
+      <DependentUpon>TestRoomReportDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="运行时模型\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\NoteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\NoteDialog.Designer.cs">
+      <DependentUpon>NoteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ImageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ImageEditor.Designer.cs">
+      <DependentUpon>ImageEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\ReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\ReportWindow.Designer.cs">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\SlashEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\SlashEditor.Designer.cs">
+      <DependentUpon>SlashEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportDesignUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportDesignUI.Designer.cs">
+      <DependentUpon>ReportDesignUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="报表常规类\DepositoryReportConfiguration.cs" />
+    <Compile Include="设计器模型\编辑框\DataTableDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\DataTableDialog.Designer.cs">
+      <DependentUpon>DataTableDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\DataSourceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\DataSourceForm.Designer.cs">
+      <DependentUpon>DataSourceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ExpandForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ExpandForm.Designer.cs">
+      <DependentUpon>ExpandForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ReportCatlogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ReportCatlogForm.Designer.cs">
+      <DependentUpon>ReportCatlogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ReportDesignForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\UIWindow\ReportDesignForm.Designer.cs">
+      <DependentUpon>ReportDesignForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportConfigDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportConfigDialog.Designer.cs">
+      <DependentUpon>ReportConfigDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportModuleSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportModuleSelect.Designer.cs">
+      <DependentUpon>ReportModuleSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportConfigDataDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="设计器模型\编辑框\ReportConfigDataDialog.Designer.cs">
+      <DependentUpon>ReportConfigDataDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运行时模型\DepositoryRTReportConfig.cs" />
+    <Compile Include="运行时模型\EntireLineReportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运行时模型\EntireLineReportDialog.Designer.cs">
+      <DependentUpon>EntireLineReportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运行时模型\TestRoomReportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="运行时模型\TestRoomReportDialog.Designer.cs">
+      <DependentUpon>TestRoomReportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="运行时模型\ReportService.cs" />
+    <Compile Include="运行时模型\ReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="运行时模型\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\左对齐.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\百分号类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\背景色.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\边框.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\表单目录.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\插入列.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\插入行.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\超连接类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打印.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打印预览.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\复选框类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\复制.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\横向网格线.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\货币类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\加粗.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\剪切.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\居中对齐.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\居中扩展.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\前景色.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\倾斜.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\日期时间.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除列.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除批注.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除行.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\上下标单元格类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\数字类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加批注.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\条形码类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图片类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\文本类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\下划线.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\下拉框类型.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\页面设置.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\右对齐.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\粘贴.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\纵向网格线.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\特殊符号.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\样式.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\条件格式化.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\移除所有批注.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\加载样式.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\冻结行.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\冻结列.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\导入Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\导出Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\保存样式.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\缩放.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\下一页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\最后一页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\第一页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\上一页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\多页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\报表参数.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\编辑.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\编辑报表.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\编辑文件夹.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\打开文件夹.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\关闭文件夹.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除报表.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除文件夹.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\新建.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\新建报表.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\新建文件夹.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\预览.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\配置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\参数界面.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\cur0.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Resources\cur1.cur" />
+    <EmbeddedResource Include="设计器模型\编辑框\ColumnOrderDialog.resx">
+      <DependentUpon>ColumnOrderDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\VariableEditor.resx">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ReportConfigDialog.resx">
+      <DependentUpon>ReportConfigDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ReportModuleSelect.resx">
+      <DependentUpon>ReportModuleSelect.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="设计器模型\编辑框\ReportConfigDataDialog.resx">
+      <DependentUpon>ReportConfigDataDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图表类型.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy  $(TargetFileName) "$(SolutionDir)RefrenceCenter"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

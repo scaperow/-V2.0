@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!--net.tcp域名地址，不带前面的http:// 和后面的 / -->
+  <NetTcpDomainAddress>112.124.99.146:8122</NetTcpDomainAddress>
+  <!--net.tcpIP地址，不带前面的http:// 和后面的 / -->
+  <NetTcpIPAddress>112.124.99.146:8122</NetTcpIPAddress>
+</config>

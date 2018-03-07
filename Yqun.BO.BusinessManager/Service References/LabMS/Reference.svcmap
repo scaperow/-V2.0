@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="842c5772-e9eb-45db-9830-1e8f0d94a52d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LabManagerService3.xsd" MetadataType="Schema" ID="3d7a40d0-9d81-4d50-bfe3-0bf70febc8ed" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd3" />
+    <MetadataFile FileName="LabManagerService1.wsdl" MetadataType="Wsdl" ID="4d741d80-10eb-410b-be64-cd6143788943" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?wsdl" />
+    <MetadataFile FileName="LabManagerService4.xsd" MetadataType="Schema" ID="b089551d-e1b8-4ffe-b0d3-3c543e904312" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LabManagerService5.xsd" MetadataType="Schema" ID="e2b5b897-203d-44e0-a029-73d09bdf4a57" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LabManagerService6.xsd" MetadataType="Schema" ID="a76714f3-e240-4184-b59e-7725c71180ec" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1618/LabManagerAll/LabManagerService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

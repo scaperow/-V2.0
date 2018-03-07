@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cfb06a67-3bbc-497f-8546-241d0bbceba8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://125.35.11.31/LABTRANSINTERFACE/DataTransport.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataTransport.wsdl" MetadataType="Wsdl" ID="2879d12c-8b40-42cf-bb05-33bb110b1f7a" SourceId="1" SourceUrl="http://125.35.11.31/LABTRANSINTERFACE/DataTransport.svc?wsdl" />
+    <MetadataFile FileName="DataTransport.disco" MetadataType="Disco" ID="c63848fa-03f1-4fd5-a802-d7c910d3334f" SourceId="1" SourceUrl="http://125.35.11.31/LABTRANSINTERFACE/DataTransport.svc?disco" />
+    <MetadataFile FileName="DataTransport.xsd" MetadataType="Schema" ID="4dfe1a25-2a37-4134-ade3-e16a64c71707" SourceId="1" SourceUrl="http://125.35.11.31/LABTRANSINTERFACE/DataTransport.svc?xsd=xsd1" />
+    <MetadataFile FileName="DataTransport1.xsd" MetadataType="Schema" ID="cb26ae87-20b5-4a85-be79-9c665ad1f813" SourceId="1" SourceUrl="http://125.35.11.31/LABTRANSINTERFACE/DataTransport.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

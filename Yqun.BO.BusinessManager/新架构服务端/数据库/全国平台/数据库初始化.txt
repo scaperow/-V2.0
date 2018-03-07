@@ -1,0 +1,280 @@
+﻿CREATE TABLE [dbo].[sys_testroom_map](
+	[ID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_sys_testroom_map_ID]  DEFAULT (newid()),
+	[LineID] [uniqueidentifier] NOT NULL,
+	[LocalTestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[RemoteTestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_testroom_map_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_testroom_map] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_document_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[SegmentCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CompanyCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[TestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[Data] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[DataName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SetDataNameUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[SetDataNameTime] [datetime] NULL,
+	[TryType] [nvarchar](16) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[TryPerson] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[TryPersonTestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NULL,
+	[TryTime] [datetime] NULL,
+	[Status] [smallint] NOT NULL,
+	[MachineCode] [nvarchar](128) NULL,
+	[NeedUpload] [bit] NOT NULL,
+	[WillUploadCount] [int] NOT NULL,
+	[ShuLiang] [decimal](18, 6) NULL,
+	[QDDJ] [nvarchar](64) NULL,
+	[BGRQ] [datetime] NULL,
+	[WTBH] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NULL,
+	[BGBH] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext1] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext2] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext3] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext4] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext5] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext6] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext7] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext8] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext9] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext10] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext11] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext12] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext13] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext14] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext15] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext16] [decimal](18, 6) NULL,
+	[Ext17] [decimal](18, 6) NULL,
+	[Ext18] [decimal](18, 6) NULL,
+	[Ext19] [decimal](18, 6) NULL,
+	[Ext20] [decimal](18, 6) NULL,
+	[LastEditedTime] [datetime] NULL,
+	[IsLock] [bit] NULL
+) 
+GO
+
+CREATE TABLE [dbo].[sys_invalid_document_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	ModuleID [uniqueidentifier] NOT NULL,--add
+	TestRoomCode [NVARCHAR](32) NOT NULL,--add
+	BGBH [NVARCHAR](256) NULL,--add
+	BGRQ [DATETIME] NULL,--add
+	Status [SMALLINT] NOT NULL DEFAULT 0,--add
+	[LastEditedTime] [datetime] NOT NULL DEFAULT GETDATE(),
+	[F_InvalidItem] [nvarchar](2048) NULL,
+	[SentCount] [int] NOT NULL DEFAULT 0,
+	[LastSentStatus] [nvarchar](max) NOT NULL DEFAULT (''),
+	[LastSentTime] [datetime] NULL,
+	[AdditionalQualified] [smallint] NOT NULL DEFAULT 0,
+	[QualifiedTime] [datetime] NULL,
+	[SGComment] [nvarchar](max) NULL,
+	[LastSGUser] [nvarchar](64) NULL,
+	[LastSGTime] [datetime] NULL,
+	[JLComment] [nvarchar](max) NULL,
+	[LastJLUser] [nvarchar](64) NULL,
+	[LastJLTime] [datetime] NULL,
+	[DealResult] [nvarchar](max) NULL,
+	[DealTime] [datetime] NULL,
+	[DealUser] [nvarchar](64) NULL
+)
+GO
+
+CREATE TABLE [dbo].[sys_engs_Tree_update](
+	[ID] [nvarchar](36)NOT NULL,
+	[Scts] [datetime] NULL ,
+	[NodeCode] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[NodeType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[RalationID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL
+)
+GO
+
+
+CREATE PROCEDURE sp_sync_data
+	
+AS
+BEGIN
+	
+DECLARE @LocalTestRoomCode nvarchar(32), @RemoteTestRoomCode nvarchar(32), @DataBaseName NVARCHAR(128),@itemID nvarchar(36)
+DECLARE @sql NVARCHAR(4000),@DataSourceAddress NVARCHAR(128),@UserName NVARCHAR(64),@PassWord NVARCHAR(64),@LastTime DATETIME
+DECLARE cur CURSOR FOR
+	SELECT  a.LocalTestRoomCode ,
+	        a.RemoteTestRoomCode,
+	        b.DataBaseName,
+	        b.DataSourceAddress,
+	        b.UserName,
+	        b.PassWord FROM dbo.sys_testroom_map a
+	JOIN SYGLDB_Lib.dbo.sys_line b ON a.LineID = b.ID
+	WHERE b.IsActive=1 AND a.IsActive=1 
+
+OPEN cur
+FETCH NEXT FROM cur INTO @LocalTestRoomCode, @RemoteTestRoomCode,@DataBaseName,@DataSourceAddress,@UserName,@PassWord
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	SELECT @LastTime=max(LastEditedTime) FROM dbo.sys_document WHERE TestRoomCode=@LocalTestRoomCode
+	IF @LastTime IS NULL
+	BEGIN
+		SET @LastTime='2011-1-1'
+	END
+	/********start sync document**********/
+   SET @sql = 'bcp "select * from '+@DataBaseName+'.dbo.sys_document WHERE TestRoomCode='''+@RemoteTestRoomCode+''' AND LastEditedTime>'''+CAST(@LastTime AS NVARCHAR(64))+'''"  queryout E:\服务端\TransferService(ZT12J)\sync\sys_document.dat -c -S '+@DataSourceAddress+' -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+   SET @sql='bcp SYGLDB_ZT12J.dbo.sys_document_update in E:\服务端\TransferService(ZT12J)\sync\sys_document.dat -c -S 127.0.0.1 -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+	update sys_document_update set testroomcode=@LocalTestRoomCode,CompanyCode=LEFT(@LocalTestRoomCode,12),SegmentCode=LEFT(@LocalTestRoomCode,8)
+	DELETE FROM sys_document WHERE ID IN (SELECT ID FROM sys_document_update)
+	
+	INSERT INTO sys_document
+	SELECT * FROM sys_document_update
+
+	DELETE FROM sys_document_update
+	/********end sync document**********/
+	
+	/********start sync invalid document**********/
+	SELECT @LastTime=max(a.LastEditedTime) FROM dbo.sys_invalid_document a JOIN dbo.sys_document b ON a.ID = b.ID WHERE b.TestRoomCode=@LocalTestRoomCode
+	IF @LastTime IS NULL
+	BEGIN
+		SET @LastTime='2011-1-1'
+	END
+   SET @sql = 'bcp "select a.* from '+@DataBaseName+'.dbo.sys_invalid_document a JOIN '+@DataBaseName+'.dbo.sys_document b ON a.ID = b.ID WHERE b.TestRoomCode='''+@RemoteTestRoomCode+''' AND a.LastEditedTime>'''+CAST(@LastTime AS NVARCHAR(64))+'''"  queryout E:\服务端\TransferService(ZT12J)\sync\sys_invalid_document.dat -c -S '+@DataSourceAddress+' -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+   SET @sql='bcp SYGLDB_ZT12J.dbo.sys_invalid_document_update in E:\服务端\TransferService(ZT12J)\sync\sys_invalid_document.dat -c -S 127.0.0.1 -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+	
+	DELETE FROM sys_invalid_document WHERE ID IN (SELECT ID FROM sys_invalid_document_update)
+	INSERT INTO sys_invalid_document
+	SELECT * FROM sys_invalid_document_update
+	DELETE FROM sys_invalid_document_update
+	/********end sync invalid document**********/
+	
+	/********start sync sys_engs_Tree**********/
+	set @sql = 'bcp "select * from '+@DataBaseName+'.dbo.sys_engs_Tree WHERE NodeType=''@module'' AND NodeCode LIKE '''+@RemoteTestRoomCode+'%''"  queryout E:\服务端\TransferService(ZT12J)\sync\sys_engs_Tree.dat -c -S '+@DataSourceAddress+' -U '+@UserName+' -P '+@PassWord
+	exec master..xp_cmdshell @sql
+	PRINT @sql
+	SET @sql='bcp SYGLDB_ZT12J.dbo.sys_engs_Tree_update in E:\服务端\TransferService(ZT12J)\sync\sys_engs_Tree.dat -c -S 127.0.0.1 -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+   DELETE FROM sys_engs_Tree WHERE ID IN (SELECT ID FROM sys_engs_Tree_update)
+   update sys_engs_Tree_update set NodeCode=@LocalTestRoomCode+right(NodeCode,4)
+	insert into sys_engs_Tree select * from sys_engs_Tree_update
+	delete from sys_engs_Tree_update
+	/********end sync sys_engs_Tree**********/
+	
+	/********start sync sys_test_data**********/
+	SELECT @LastTime=max(CreatedTime) FROM dbo.sys_test_data WHERE TestRoomCode=@RemoteTestRoomCode
+	IF @LastTime IS NULL
+	BEGIN
+		SET @LastTime='2011-1-1'
+	END
+	set @sql = 'bcp "SELECT * FROM '+@DataBaseName+'.dbo.sys_test_data WHERE TestRoomCode='''+@RemoteTestRoomCode+''' and Status=1 and CreatedTime>'''+CAST(@LastTime AS NVARCHAR(64))+''' " queryout E:\服务端\TransferService(ZT12J)\sync\sys_test_data.dat -c -S '+@DataSourceAddress+' -U '+@UserName+' -P '+@PassWord
+	PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+   SET @sql='bcp SYGLDB_ZT12J.dbo.sys_test_data in E:\服务端\TransferService(ZT12J)\sync\sys_test_data.dat -c -S 127.0.0.1 -U '+@UserName+' -P '+@PassWord
+   
+   PRINT @sql
+   exec master..xp_cmdshell @sql
+
+	/********end sync sys_test_data**********/
+	
+	/********start sync location**********/
+	set @sql = 'bcp "SELECT distinct b.ID,b.X,b.Y FROM '+@DataBaseName+'.dbo.sys_engs_Tree a JOIN '+@DataBaseName+'.dbo.sys_engs_ItemInfo b on a.RalationID=b.ID WHERE a.NodeCode='''+@RemoteTestRoomCode+''' " queryout E:\服务端\TransferService(ZT12J)\sync\sys_location.dat -c -S '+@DataSourceAddress+' -U '+@UserName+' -P '+@PassWord
+	PRINT @sql
+   exec master..xp_cmdshell @sql
+   
+   SET @sql='bcp SYGLDB_ZT12J.dbo.sys_location in E:\服务端\TransferService(ZT12J)\sync\sys_location.dat -c -S 127.0.0.1 -U '+@UserName+' -P '+@PassWord
+   exec master..xp_cmdshell @sql
+   
+   SELECT @itemID=RalationID FROM dbo.sys_engs_Tree WHERE NodeCode=@LocalTestRoomCode
+   print '@itemID='+@LocalTestRoomCode
+   UPDATE sys_location SET ID=@itemID
+   
+   UPDATE a SET a.X = b.X,a.Y=b.Y
+       FROM sys_engs_ItemInfo a
+       INNER JOIN sys_location b  ON a.ID=b.ID
+       
+   DELETE FROM sys_location
+   
+   
+	/********end sync location**********/
+	
+   FETCH NEXT FROM cur INTO @LocalTestRoomCode, @RemoteTestRoomCode,@DataBaseName,@DataSourceAddress,@UserName,@PassWord
+END
+
+CLOSE cur
+DEALLOCATE cur
+
+END
+GO
+
+
+CREATE TABLE [dbo].[sys_sms_receiver_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[PersonName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CompanyName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CellPhone] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsActive] [smallint] NOT NULL
+)
+GO
+
+CREATE TABLE [dbo].[sys_loginlog_update](
+	[ID] [bigint] NOT NULL,
+	[loginDay] [nvarchar](10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ipAddress] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[macAddress] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[machineName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[osVersion] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[osUserName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[UserName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ProjectName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[SegmentName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CompanyName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoomName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[FirstAccessTime] [datetime] NULL,
+	[LastAccessTime] [datetime] NULL
+)
+GO
+
+CREATE TABLE [dbo].[sys_location](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[X] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[Y] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_location] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Index [idx_testroomcode]    Script Date: 06/25/2014 14:40:37 ******/
+CREATE NONCLUSTERED INDEX [idx_testroomcode] ON [dbo].[sys_test_data] 
+(
+	[TestRoomCode] ASC
+)
+INCLUDE ( [CreatedTime]) WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+GO

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!--net.tcp域名地址，不带前面的http:// 和后面的 / -->
+  <NetTcpDomainAddress>localhost:8002</NetTcpDomainAddress>
+  <!--net.tcpIP地址，不带前面的http:// 和后面的 / -->
+  <NetTcpIPAddress>192.168.1.101:8002</NetTcpIPAddress>
+</config>

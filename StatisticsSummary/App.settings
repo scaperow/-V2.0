@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="StatisticsSummary" GeneratedClassName="App">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Lines" Type="System.String" Scope="User">
+      <Value Profile="(Default)">net.tcp://lib.kingrocket.com:8066/TransferService.svc
+net.tcp://lib.kingrocket.com:8066/TransferService.svc</Value>
+    </Setting>
+    <Setting Name="Offset" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2013/01/01
+2013/01/01
+</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

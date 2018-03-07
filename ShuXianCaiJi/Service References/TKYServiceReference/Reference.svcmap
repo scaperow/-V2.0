@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="973bd3c3-3e89-44b4-952f-7f9fb8da3b5b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://www.railwaycmpl.com:1620/LabWebService/LabManagerService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LabManagerService.wsdl" MetadataType="Wsdl" ID="2681abf6-cb56-4e46-8aba-27f44de80362" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1620/LabWebService/LabManagerService.svc?wsdl" />
+    <MetadataFile FileName="LabManagerService.xsd" MetadataType="Schema" ID="ca6e4e8b-e5f8-4617-8f2e-f9f2a1bed62c" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1620/LabWebService/LabManagerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LabManagerService1.xsd" MetadataType="Schema" ID="74d533e8-215d-4625-ac0b-7610b8798e63" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1620/LabWebService/LabManagerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LabManagerService2.xsd" MetadataType="Schema" ID="bcc5ac68-2176-48b9-ab1d-6c883760eba3" SourceId="1" SourceUrl="http://www.railwaycmpl.com:1620/LabWebService/LabManagerService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

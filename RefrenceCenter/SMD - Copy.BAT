@@ -1,0 +1,1 @@
+schtasks /create /tn SMD /tr ./TestDataUploadWS.exe /sc DAILY /mo 1 /st 00:00:00

@@ -1,0 +1,49 @@
+﻿
+  
+--- UploadInfo
+if(exists(select * from dbo.syscolumns where name = 'UploadInfo' and id in 
+(select id from dbo.sysobjects where id = object_id(N'[dbo].[sys_test_data]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)))
+	begin
+		print('UploadInfo存在')
+	end
+else
+	begin
+	print('UploadInfo不存在创建')
+	alter table sys_test_data add UploadInfo nvarchar(max)DEFAULT '' ;
+end
+
+---UploadCode
+if(exists(select * from dbo.syscolumns where name = 'UploadCode' and id in 
+(select id from dbo.sysobjects where id = object_id(N'[dbo].[sys_test_data]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)))
+	begin
+		print('UploadCode存在')
+	end
+else
+	begin
+	print('UploadCode不存在创建')
+  alter table sys_test_data     add UploadCode nvarchar(50) DEFAULT '' ;
+end
+
+---UploadTDB
+if(exists(select * from dbo.syscolumns where name = 'UploadTDB' and id in 
+(select id from dbo.sysobjects where id = object_id(N'[dbo].[sys_test_data]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)))
+	begin
+		print('UploadTDB存在')
+	end
+else
+	begin
+	print('UploadTDB不存在创建')
+	alter table sys_test_data     add UploadTDB smallint DEFAULT 0 ;
+end
+
+--UploadEMC
+if(exists(select * from dbo.syscolumns where name = 'UploadEMC' and id in 
+(select id from dbo.sysobjects where id = object_id(N'[dbo].[sys_test_data]') and OBJECTPROPERTY(id, N'IsUserTable') = 1)))
+	begin
+		print('UploadEMC存在')
+	end
+else
+	begin
+	print('UploadEMC不存在创建')
+	alter table sys_test_data     add UploadEMC smallint DEFAULT 0 ;
+end

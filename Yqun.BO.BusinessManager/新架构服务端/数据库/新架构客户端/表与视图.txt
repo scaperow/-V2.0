@@ -1,0 +1,1930 @@
+﻿
+--工管中心用户认证表
+CREATE TABLE [dbo].[sys_ggc_UserAuth](
+	[IDCARDNUM] [varchar](30) NOT NULL,
+	[YHMC] [varchar](20) NULL,
+	[LABKEY] [varchar](50) NULL,
+	[LABIV] [varchar](50) NULL,
+ CONSTRAINT [PK_sys_ggc_UserAuth] PRIMARY KEY CLUSTERED 
+(
+	[IDCARDNUM] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[Sys_Tree](
+	[NodeCode] [varchar](50) NOT NULL,
+	[DESCRIPTION] [varchar](50) NULL,
+	[DepType] [varchar](50) NULL,
+	[OrderID] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+--资料属性扩展表
+CREATE TABLE [dbo].[sys_document_ext](
+	[ID] [uniqueidentifier] NOT NULL,
+	[TemperatureType] [smallint] NOT NULL DEFAULT 0,
+ CONSTRAINT [PK_sys_document_ext] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+--线路单元格样式
+CREATE TABLE [dbo].[sys_line_cellstyle](
+	[CSID] [int] IDENTITY(1,1) NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[CellName] [nvarchar](50) NOT NULL,
+	[CellStyle] [nvarchar](max) NULL,
+ CONSTRAINT [PK_sys_line_cellstyle] PRIMARY KEY CLUSTERED 
+(
+	[CSID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--生成模板库需要的数据库内容
+CREATE TABLE [dbo].[sys_test_overtime](
+	[ID] [uniqueidentifier] NOT NULL,
+	[CaiJiID] [uniqueidentifier] NOT NULL,
+	[DataID] [uniqueidentifier] NOT NULL,
+	[StadiumID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[WTBH] [nvarchar](256) NOT NULL,
+	[TestRoomCode] [nvarchar](32) NOT NULL,
+	[SerialNumber] [int] NOT NULL,
+	[UserName] [nvarchar](64) NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[TestData] [nvarchar](max) NOT NULL,
+	[RealTimeData] [nvarchar](max) NOT NULL,
+	[MachineCode] [nvarchar](128) NOT NULL,
+	[UploadInfo] [nvarchar](max) NOT NULL,
+	[UploadCode] [nvarchar](50) NOT NULL,
+	[UploadTDB] [smallint] NOT NULL,
+	[UploadEMC] [smallint] NOT NULL,
+	[TotallNumber] [int] NOT NULL,
+	[SGComment] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastSGUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastSGTime] [datetime] NULL,
+	[JLComment] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[ApprovedJLUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[ApprovedTime] [datetime] NULL,
+	[Status] [smallint] NOT NULL CONSTRAINT [DF_sys_test_overtime_Status]  DEFAULT ((0)),
+ CONSTRAINT [PK_sys_test_overtime] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_equipment_code](
+	[DataID] [nvarchar](50) NOT NULL,
+	[SysCode] [nvarchar](50) NULL,
+	[InfoCenterCode] [varbinary](50) NULL,
+	[ETCCode] [nvarchar](50) NULL,
+ CONSTRAINT [PK_sys_equipment_code] PRIMARY KEY CLUSTERED 
+(
+	[DataID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+CREATE TABLE [dbo].[sys_caiji_log](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[MachineCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[UserName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ErrMsg] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[TimeStamp] [datetime] NOT NULL CONSTRAINT [DF_sys_caiji_log_TimeStamp]  DEFAULT (getdate()),
+ CONSTRAINT [PK_sys_caiji_log] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[bhz_Mix](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[PeiBiCode] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[ShuiNi1] [decimal](18, 4) NULL,
+	[ShuiNi2] [decimal](18, 4) NULL,
+	[ChanHeLiao1] [decimal](18, 4) NULL,
+	[ChanHeLiao2] [decimal](18, 4) NULL,
+	[XiGuLiao] [decimal](18, 4) NULL,
+	[CuGuLiao1] [decimal](18, 4) NULL,
+	[CuGuLiao2] [decimal](18, 4) NULL,
+	[CuGuLiao3] [decimal](18, 4) NULL,
+	[CuGuLiao4] [decimal](18, 4) NULL,
+	[WaiJiaJi1] [decimal](18, 4) NULL,
+	[WaiJiaJi2] [decimal](18, 4) NULL,
+	[Shui] [decimal](18, 4) NULL,
+	[TestCode] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[QiangDuDengJi] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[TanLuoDu] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[ProjectName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NULL,
+	[ShiGongBuWei] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NULL,
+	[ShengChanDate] [datetime] NULL,
+	[FangLiang] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_bhz_Mix] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'主键，自增' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'配合比编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'PeiBiCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'水泥' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ShuiNi1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'掺合料1（粉煤灰/矿粉）' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ChanHeLiao1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'掺合料2（粉煤灰/矿粉）' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ChanHeLiao2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'细骨料' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'XiGuLiao'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'粗骨料1' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'CuGuLiao1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'粗骨料2' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'CuGuLiao2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'粗骨料3' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'CuGuLiao3'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'外加剂1' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'WaiJiaJi1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'外加剂2' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'WaiJiaJi2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'水' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'Shui'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'实验室编号' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'TestCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'设计强度等级' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'QiangDuDengJi'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'允许坍落度' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'TanLuoDu'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'工程名称' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ProjectName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'施工部位' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ShiGongBuWei'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'生产日期' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'ShengChanDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'每盘方量' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'bhz_Mix', @level2type=N'COLUMN',@level2name=N'FangLiang'
+GO
+
+
+CREATE TABLE [dbo].[sys_day](
+	[DayID] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_day] PRIMARY KEY CLUSTERED 
+(
+	[DayID] ASC
+)
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_stadium_temperature]( 
+[ID] [uniqueidentifier] NOT NULL DEFAULT NEWID(), 
+[TestRoomCode] [nvarchar](48) NOT NULL DEFAULT N'', 
+[Temperature1] [float] NULL, 
+[Temperature2] [float] NULL, 
+[Temperature3] [float] NULL, 
+[TemperatureAvg] [float] NOT NULL DEFAULT 0, 
+[Comment] [nvarchar](1024) NULL, 
+[LastEditUser] [nvarchar](64) NULL, 
+[LastEditTime] [datetime] NOT NULL DEFAULT GETDATE(), 
+[TestTime] [datetime] NOT NULL DEFAULT GETDATE(), 
+CONSTRAINT [PK_sys_stadium_temperature] PRIMARY KEY CLUSTERED 
+( 
+[ID] ASC 
+) 
+) ON [PRIMARY] 
+
+GO 
+
+CREATE TABLE [dbo].[sys_pxjz_frequency](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[Frequency] [float] NOT NULL,
+	[FrequencyType] [smallint] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_pxjz_frequency] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_module_watermark](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[FileName] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[WLeft] [int] NOT NULL,
+	[WTop] [int] NOT NULL,
+	[Width] [int] NOT NULL,
+	[Height] [int] NOT NULL,
+	[WOpacity] [int] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_module_watermark_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_module_watermark] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_Image](
+	[ImgID] [nvarchar](64) NOT NULL,
+	[ImgDataID] [nvarchar](64) NOT NULL,
+	[ImgName] [nvarchar](128) NULL,
+	[ImgContent] [image] NULL,
+	[ImgRemark] [nvarchar](128) NULL,
+ CONSTRAINT [PK_sys.biz.Image] PRIMARY KEY CLUSTERED 
+(
+	[ImgID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_report_parameters](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ReportID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Description] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NOT NULL,
+ CONSTRAINT [PK_sys_report_parameters] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_px_relation](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SGDataID] [uniqueidentifier] NOT NULL,
+	[PXDataID] [uniqueidentifier] NOT NULL,
+	[PXTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_px_relation] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_module](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_module_Name]  DEFAULT (''),
+	[Description] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_module_Description]  DEFAULT (''),
+	[CatlogCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ModuleSetting] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_module_ModuleSetting]  DEFAULT (''),
+	[QualifySetting] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_module_QualifySetting]  DEFAULT (''),
+	[UploadSetting] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_module_UploadSetting]  DEFAULT (''),
+	[ModuleType] [smallint] NOT NULL CONSTRAINT [DF_sys_module_ModuleType]  DEFAULT ((1)),
+	[DeviceType] [smallint] NOT NULL CONSTRAINT [DF_sys_module_DeviceType]  DEFAULT ((1)),
+	[ModuleALT] [nvarchar](32) NOT NULL CONSTRAINT [DF_sys_module_ModuleALT]  DEFAULT (''),
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_module_IsActive]  DEFAULT ((1)),
+	[ReportIndex] [int] NOT NULL DEFAULT((0)),
+	[ModuleALTGG] [VARCHAR](10) DEFAULT(''),
+	[GGCUploadSetting] [VARCHAR](4000) DEFAULT(''),
+	[GGCDocUploadSetting] [VARCHAR](4000) DEFAULT(''),
+	[StatisticsMap] [NVARCHAR](MAX) NULL,
+ CONSTRAINT [PK_sys_module] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_module_config](
+	[ID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_sys_module_config_ID]  DEFAULT (newid()),
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SerialNumber] [int] NOT NULL,
+	[Config] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_module_config_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_module_config] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_sheet](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_sheet_Name]  DEFAULT (''),
+	[CatlogCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SheetXML] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SheetData] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_sheet_IsActive]  DEFAULT ((1)),
+	[CellLogic] [NVARCHAR(MAX)] NOT NULL  DEFAULT (''),
+ CONSTRAINT [PK_sys_sheet] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_module_sheet](
+	[ID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_sys_module_sheet_ID]  DEFAULT (newid()),
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[SortIndex] [int] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_module_sheet] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[sys_document](
+	[ID] [uniqueidentifier] NOT NULL,
+	[SegmentCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CompanyCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[TestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[Data] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[DataName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_data_DataName]  DEFAULT (''),
+	[SetDataNameUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[SetDataNameTime] [datetime] NULL,
+	[TryType] [nvarchar](16) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_Table_1_TestType]  DEFAULT ('自检'),
+	[TryPerson] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[TryPersonTestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NULL,
+	[TryTime] [datetime] NULL,
+	[Status] [smallint] NOT NULL CONSTRAINT [DF_sys_data_IsActive]  DEFAULT ((1)),
+	[MachineCode] [nvarchar](128) NULL,
+	[NeedUpload] [bit] NOT NULL CONSTRAINT [DF_sys_document_NeedUpload]  DEFAULT ((1)),
+	[WillUploadCount] [int] NOT NULL CONSTRAINT [DF_sys_document_WillUploadedCount]  DEFAULT ((1)),
+	[ShuLiang] [decimal](18, 6) NULL CONSTRAINT [DF_sys_data_ShuLiang]  DEFAULT ((0)),
+	[QDDJ] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_sys_data_Unit]  DEFAULT (''),
+	[BGRQ] [datetime] NULL,
+	[WTBH] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NULL,
+	[BGBH] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext1] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext2] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext3] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext4] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext5] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext6] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext7] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext8] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext9] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext10] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext11] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext12] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext13] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext14] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext15] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[Ext16] [decimal](18, 6) NULL,
+	[Ext17] [decimal](18, 6) NULL,
+	[Ext18] [decimal](18, 6) NULL,
+	[Ext19] [decimal](18, 6) NULL,
+	[Ext20] [decimal](18, 6) NULL,
+	[LastEditedTime] [datetime] NULL,
+	[IsLock] [bit] NOT NULL DEFAULT ((0)),
+CONSTRAINT [PK_sys_document] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'0表示删除；1正式提交；' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sys_document', @level2type=N'COLUMN',@level2name=N'Status'
+GO
+
+
+CREATE TABLE [dbo].[sys_custom_view](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[TestRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CustomView] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_custom_view] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_formulas](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[RowIndex] [int] NOT NULL,
+	[ColumnIndex] [int] NOT NULL,
+	[Formula] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_formulas_Formula]  DEFAULT (''),
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_formulas_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_formulas] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[sys_line_formulas](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[RowIndex] [int] NOT NULL,
+	[ColumnIndex] [int] NOT NULL,
+	[Formula] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_line_formulas_Formula]  DEFAULT (''),
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_line_formulas_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_line_formulas] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_invalid_document](
+	[ID] [uniqueidentifier] NOT NULL,
+	ModuleID [uniqueidentifier] NOT NULL,--add
+	TestRoomCode [NVARCHAR](32) NOT NULL,--add
+	BGBH [NVARCHAR](256) NULL,--add
+	BGRQ [DATETIME] NULL,--add
+	Status [SMALLINT] NOT NULL DEFAULT 0,--add
+	[LastEditedTime] [datetime] NOT NULL DEFAULT GETDATE(),
+	[F_InvalidItem] [nvarchar](2048) NULL,
+	[SentCount] [int] NOT NULL DEFAULT 0,
+	[LastSentStatus] [nvarchar](max) NOT NULL DEFAULT (''),
+	[LastSentTime] [datetime] NULL,
+	[AdditionalQualified] [smallint] NOT NULL DEFAULT 0,
+	[QualifiedTime] [datetime] NULL,
+	[SGComment] [nvarchar](max) NULL,
+	[LastSGUser] [nvarchar](64) NULL,
+	[LastSGTime] [datetime] NULL,
+	[JLComment] [nvarchar](max) NULL,
+	[LastJLUser] [nvarchar](64) NULL,
+	[LastJLTime] [datetime] NULL,
+	[DealResult] [nvarchar](max) NULL,
+	[DealTime] [datetime] NULL,
+	[DealUser] [nvarchar](64) NULL,
+ CONSTRAINT [PK_sys_invalid_document] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_operate_log](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[dataID] [uniqueidentifier] NOT NULL,
+	[moduleID] [uniqueidentifier] NOT NULL,
+	[testRoomCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_operate_log_testRoomCode]  DEFAULT (''),
+	[BGBH] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_operate_log_BGBH]  DEFAULT (''),
+	[DataName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_operate_log_DataName]  DEFAULT (''),
+	[requestID] [uniqueidentifier] NOT NULL,
+	[modifiedby] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[modifiedDate] [datetime] NOT NULL,
+	[optType] [nvarchar](10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[modifyItem] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+ CONSTRAINT [PK_sys_operate_log] PRIMARY KEY NONCLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[sys_request_change](
+	[ID] [uniqueidentifier] NOT NULL,
+	[DataID] [uniqueidentifier] NOT NULL,
+	[RequestBy] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[RequestTime] [datetime] NOT NULL,
+	[Caption] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Reason] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ApprovePerson] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ApproveTime] [datetime] NULL,
+	[ProcessReason] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NULL,
+	[State] [nvarchar](16) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_request_change_State]  DEFAULT ('已提交'),
+ CONSTRAINT [PK_sys_request_change] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+--新添加两个字段(Temperatures,StadiumRange) By Tan In20140316
+CREATE TABLE [dbo].[sys_stadium](
+	[ID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_sys_stadium_ID]  DEFAULT (newid()),
+	[DataID] [uniqueidentifier] NOT NULL,
+	[LastUpdatedTime] [datetime] NOT NULL CONSTRAINT [DF_sys_stadium_CreatedTime]  DEFAULT (getdate()),
+	[DateSpan] [int] NOT NULL,
+    [Temperatures] [int] NOT NULL DEFAULT 0, 
+    [StadiumRange] [int] NOT NULL DEFAULT 24, 
+    [TemperatureSum] [float] NOT NULL DEFAULT 0,
+	[StartTime] [datetime] NOT NULL  DEFAULT getdate(),
+	[EndTime] [datetime] NOT NULL  DEFAULT getdate(),
+	[ModuleID] [uniqueidentifier] NOT NULL CONSTRAINT [DF_sys_stadium_ModuleID]  DEFAULT (newid()),
+	[TestRoomCode] [nvarchar](48) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_stadium_TestRoomCode]  DEFAULT (''),
+	[DataName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_stadium_DataName]  DEFAULT (''),
+	[F_ItemId] [nvarchar](16) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_PH] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_ZJRQ] [datetime] NULL,
+	[F_SJBH] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_SJSize] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_SYXM] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_BGBH] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_WTBH] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_Added] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NULL,
+	[F_IsDone] [bit] NOT NULL CONSTRAINT [DF_sys_stadium_F_IsDone]  DEFAULT ((0)),
+	[F_ItemIndex] [int] NOT NULL CONSTRAINT [DF_sys_stadium_F_ItemIndex]  DEFAULT ((1)),
+	[SGComment] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastSGUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastSGTime] [datetime] NULL,
+	[JLComment] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastJLUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NULL,
+	[LastJLTime] [datetime] NULL,
+ CONSTRAINT [PK_sys_stadium] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_stadium_config](
+	[ID] [uniqueidentifier] NOT NULL,
+	[StadiumConfig] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_stadium_config_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_stadium_config] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_test_data](
+	[ID] [uniqueidentifier] NOT NULL,
+	[DataID] [uniqueidentifier] NOT NULL,
+	[StadiumID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[WTBH] [nvarchar](256) NOT NULL,
+	[TestRoomCode] [nvarchar](32) NOT NULL,
+	[SerialNumber] [int] NOT NULL,
+	[UserName] [nvarchar](64) NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[TestData] [nvarchar](max) NOT NULL,
+	[RealTimeData] [nvarchar](max) NOT NULL,
+	[MachineCode] [nvarchar](128) NOT NULL,
+	[Status] [smallint] NOT NULL,
+	[UploadInfo] [nvarchar](max) NOT NULL,
+	[UploadCode] [nvarchar](50) NOT NULL,
+	[UploadTDB] [smallint] NOT NULL,
+	[UploadEMC] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_test_data] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上传铁道部，0未上传；1上传成功' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sys_test_data', @level2type=N'COLUMN',@level2name=N'UploadTDB'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'上传工管中心，1上传工管中心成功；0未上传工管中心' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sys_test_data', @level2type=N'COLUMN',@level2name=N'UploadEMC'
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_CreatedTime]  DEFAULT (getdate()) FOR [CreatedTime]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_MachineCode]  DEFAULT ('') FOR [MachineCode]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_Table_1_IsActive]  DEFAULT ((0)) FOR [Status]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_UploadInfo]  DEFAULT ('') FOR [UploadInfo]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_UploadCode]  DEFAULT ('') FOR [UploadCode]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_UploadTDB]  DEFAULT ((0)) FOR [UploadTDB]
+GO
+
+ALTER TABLE [dbo].[sys_test_data] ADD  CONSTRAINT [DF_sys_test_data_UploadEMC]  DEFAULT ((0)) FOR [UploadEMC]
+GO
+
+-- 创建一套模板库数据导入的备份表与导入的存储过程
+CREATE TABLE [dbo].[sys_module_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+	[Description] [nvarchar](2048) NOT NULL,
+	[CatlogCode] [nvarchar](32),
+	[ModuleSetting] [nvarchar](max) NOT NULL,
+	[QualifySetting] [nvarchar](256) NOT NULL,
+	[UploadSetting] [nvarchar](max) NOT NULL,
+	[ModuleType] [smallint] NOT NULL,
+	[DeviceType] [smallint] NOT NULL,
+	[ModuleALT] [nvarchar](32) NOT NULL,
+	[CreatedUser] [nvarchar](64) NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+	[ReportIndex] [int] NOT NULL,
+	[ModuleALTGG] [VARCHAR](10) DEFAULT(''),
+	[GGCUploadSetting] [VARCHAR](4000) DEFAULT(''),
+	[GGCDocUploadSetting] [VARCHAR](4000) DEFAULT(''),
+	[StatisticsMap] [NVARCHAR](MAX) NULL,
+ CONSTRAINT [PK_sys_module_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+CREATE TABLE [dbo].[sys_module_config_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SerialNumber] [int] NOT NULL,
+	[Config] [nvarchar](max) NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_module_config_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[sys_sheet_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](256) NOT NULL ,
+	[CatlogCode] [nvarchar](32)  NOT NULL,
+	[SheetXML] [nvarchar](max)  NOT NULL,
+	[SheetData] [nvarchar](max)  NOT NULL,
+	[CreatedUser] [nvarchar](64) NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64)  NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+	[CellLogic] [NVARCHAR(MAX)] NOT NULL,
+ CONSTRAINT [PK_sys_sheet_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[sys_module_sheet_update](
+	[ID] [uniqueidentifier]  NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[SortIndex] [int] NOT NULL,
+	[LastEditedUser] [nvarchar](64)  NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_module_sheet_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+CREATE TABLE [dbo].[sys_formulas_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[RowIndex] [int] NOT NULL,
+	[ColumnIndex] [int] NOT NULL,
+	[Formula] [nvarchar](2048) NOT NULL,
+	[CreatedUser] [nvarchar](64) NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_formulas_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[sys_stadium_config_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[StadiumConfig] [nvarchar](max) NOT NULL,
+	[LastEditedUser] [nvarchar](64) NOT NULL,
+	[LastEditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_stadium_config_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_ModuleCatlog_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[CatlogCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CatlogName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_biz_PrimaryDetailsCatlog_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[sys_biz_SheetCatlog_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[CatlogCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CatlogName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_biz_SheetCatlog_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_dictionary_update](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[SCPT] [varchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[CODECLASS] [nvarchar](8) COLLATE Chinese_PRC_CI_AS NULL,
+	[DESCRIPTION] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CODE] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[CANANYLEVEL] [smallint] NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_dictionary_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_report](
+	[ID] [uniqueidentifier] NOT NULL,
+	[CatlogCode] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Name] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Description] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SheetStyle] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Config] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_report_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_report] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_report_config](
+	[ID] [int] NOT NULL,
+	[TestName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[UnitName] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Frequency] [nvarchar](32) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_report_module_config_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_report_module_config] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_report_config_module](
+	[ReportConfigID] [int] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[sys_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[FileName] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[FileType] [smallint] NOT NULL,
+	[CreatedServerTime] [datetime] NOT NULL,
+	[FileState] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_DataPermission](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[TableID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[FieldName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[FieldValues] [nvarchar](1000) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_auth_DataPermission] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_FieldPermission](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[FieldsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Editable] [bit] NULL,
+	[Viewable] [bit] NULL,
+ CONSTRAINT [PK_sys_auth_FieldPermission] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_FunctionPermission](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[FunctionsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_FunctionPermission] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Permissions](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[ModuleID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ClsInfo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_Permissions] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_RecordPermission](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[RecordsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[RecordCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_RecordPermission] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Roles](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[Name] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Code] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Permissions] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsAdministrator] [bit] NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_Roles] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Users](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[Code] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[UserName] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Password] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Roles] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsSys] [bit] NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+	[Devices] [nvarchar](500) NULL,
+ CONSTRAINT [PK_sys_auth_Users] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_FunctionInfos](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_biz_FunctionInfos_ID]  DEFAULT (newid()),
+	[scts] [datetime] NULL CONSTRAINT [DF_sys_biz_FunctionInfos_scts]  DEFAULT (getdate()),
+	[scpt] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[AssemblyName] [nvarchar](150) COLLATE Chinese_PRC_CI_AS NULL,
+	[FullClassName] [nvarchar](150) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_biz_FunctionInfos] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_ModuleCatlog](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_biz_ModuleCatlog_Scts]  DEFAULT (getdate()),
+	[CatlogCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CatlogName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_biz_PrimaryDetailsCatlog] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_reminder_Itemfrequency](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ModelIndex] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ModelCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[TestRoomID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ModelName] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Frequency] [float] NOT NULL,
+	[FrequencyType] [tinyint] NOT NULL CONSTRAINT [DF_sys_biz_reminder_Itemfrequency_FrequencyType]  DEFAULT ((1)),
+	[modifyTime] [datetime] NULL CONSTRAINT [DF_sys_biz_reminder_Itemfrequency_SCTS]  DEFAULT (getdate()),
+	[modifyBy] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsActive] [tinyint] NOT NULL CONSTRAINT [DF_sys_biz_reminder_Itemfrequency_flag]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_biz_reminder_Itemfrequency_1] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1=平行，2=见证' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sys_biz_reminder_Itemfrequency', @level2type=N'COLUMN',@level2name=N'FrequencyType'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'1=正在使用，0=不使用' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'sys_biz_reminder_Itemfrequency', @level2type=N'COLUMN',@level2name=N'IsActive'
+GO
+
+CREATE TABLE [dbo].[sys_biz_reminder_testitem](
+	[ID] [int] NOT NULL,
+	[ItemName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestCount] [tinyint] NULL,
+	[Type] [tinyint] NULL,
+ CONSTRAINT [PK_sys_testitem] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_SheetCatlog](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_biz_SheetCatlog_Scts]  DEFAULT (getdate()),
+	[CatlogCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CatlogName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_biz_SheetCatlog] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_dictionary](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_dictionary_ID_1]  DEFAULT (''),
+	[SCTS] [datetime] NULL CONSTRAINT [DF_sys_dictionary_SCTS]  DEFAULT (getdate()),
+	[SCPT] [varchar](36) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_sys_dictionary_SCPT]  DEFAULT ((0)),
+	[CODECLASS] [nvarchar](8) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_sys_dictionary_CODECLASS_1]  DEFAULT (''),
+	[DESCRIPTION] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_sys_dictionary_DESCRIPTION_1]  DEFAULT (''),
+	[CODE] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_sys_dictionary_CODE_1]  DEFAULT (''),
+	[CANANYLEVEL] [smallint] NULL CONSTRAINT [DF_sys_dictionary_CANANYLEVEL]  DEFAULT ((0)),
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_dictionary] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_engs_CompanyInfo](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_engs_CompanyInfo_Scts]  DEFAULT (getdate()),
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[DepType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[DepAbbrev] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[ConstructionCompany] [nvarchar](500) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_engs_orginfo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_ItemInfo](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_engs_ItemInfo_Scts]  DEFAULT (getdate()),
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ItemType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_engs_prjmachine_1] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_ProjectInfo](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_engs_ProjectInfo_Scts]  DEFAULT (getdate()),
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ShortName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegFrom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegTo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[LineName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[HigWayClassification] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TotalDistance] [decimal](18, 2) NULL,
+	[ToltalPrice] [decimal](18, 2) NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_engs_PrjItem] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_SectionInfo](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_engs_SectionInfo_Scts]  DEFAULT (getdate()),
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegFrom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegTo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Price] [decimal](18, 2) NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_engs_Prjsct] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_Tree](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_engs_Tree_Scts]  DEFAULT (getdate()),
+	[NodeCode] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[NodeType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[RalationID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_engs_PrjItemTree] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_Tree_Chart](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_engs_Tree_Chart_ID]  DEFAULT (newid()),
+	[scts] [datetime] NULL CONSTRAINT [DF_sys_engs_Tree_Chart_scts]  DEFAULT (getdate()),
+	[NodeFlag] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[NodeCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ReportID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ReportName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_engs_Tree_Chart] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_loginlog](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[loginDay] [nvarchar](10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ipAddress] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[macAddress] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[machineName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[osVersion] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[osUserName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[UserName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ProjectName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[SegmentName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CompanyName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoomName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[FirstAccessTime] [datetime] NULL,
+	[LastAccessTime] [datetime] NULL,
+ CONSTRAINT [PK_sys_loginlog_1] PRIMARY KEY CLUSTERED 
+(
+	[loginDay] ASC,
+	[macAddress] ASC,
+	[UserName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_qualificationauth](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_QualificationAuth_Scts]  DEFAULT (getdate()),
+	[CODE] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[FOLDERCODE] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_QualificationAuth] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_sms_log](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SMSPhone] [nvarchar](16) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SMSContent] [nvarchar](1024) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SentTime] [datetime] NOT NULL CONSTRAINT [DF_sys_sms_log_SentTime]  DEFAULT (getdate()),
+	[SentError] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_sms_log_SentError]  DEFAULT (''),
+	[RelationID] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+ CONSTRAINT [PK_sys_sms_log] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_sms_receiver](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[TestRoomCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[PersonName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[TestRoom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CompanyName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CellPhone] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsActive] [smallint] NOT NULL CONSTRAINT [DF_sys_sms_receiver_IsActive]  DEFAULT ((1)),
+ CONSTRAINT [PK_sys_sms_receiver] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_sms_stadium_log](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[SMSPhone] [nvarchar](256) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SMSContent] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SentTime] [datetime] NOT NULL CONSTRAINT [DF_sys_sms_log_stadium_SentTime]  DEFAULT (getdate()),
+	[SentError] [nvarchar](2048) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_sms_stadium_log_SentError]  DEFAULT (''),
+	[RelationID] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+ CONSTRAINT [PK_sys_sms_stadium_log] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_solforldr](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CODE] [varchar](max) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORLDR_CODE]  DEFAULT ((0)),
+	[NAME] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORLDR_NAME]  DEFAULT ((0)),
+	[OFSOLUTION] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORLDR_OFSOLUTION]  DEFAULT ((0)),
+	[ISSYSFOLDER] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_ISSYSFOLDER]  DEFAULT ((0)),
+	[ORDERINDEX] [int] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_ORDERINDEX]  DEFAULT ((0)),
+	[TYPEFALG] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORLDR_TYPEFALG]  DEFAULT ((0)),
+	[SCTS] [datetime] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCTS]  DEFAULT (getdate()),
+	[SCUS] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCDF] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCDF]  DEFAULT ((0)),
+	[SCPT] [varchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCAP] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCST] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCWT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCWT]  DEFAULT ((0)),
+	[SCER] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCER]  DEFAULT ((0)),
+	[SCDL] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCDL]  DEFAULT ((0)),
+	[SCCT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCCT]  DEFAULT ((0)),
+	[SCSV] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORLDR_SCSV]  DEFAULT ((0)),
+ CONSTRAINT [PMK_SYS_SOLFORLDR_ID] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_solcontent](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[NAME] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLCONTENT_NAME]  DEFAULT ((0)),
+	[FCONTENT] [varbinary](max) NULL CONSTRAINT [DFT_SYS_SOLCONTENT_FCONTENT]  DEFAULT ((0)),
+	[OFFOLDER] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLCONTENT_OFFOLDER]  DEFAULT ((0)),
+	[ORDERINDEX] [int] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_ORDERINDEX]  DEFAULT ((0)),
+	[TYPEFALG] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLCONTENT_TYPEFALG]  DEFAULT ((0)),
+	[OFSOLUTION] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLCONTENT_OFSOLUTION]  DEFAULT ((0)),
+	[DESCRIPTION] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLCONTENT_DESCRIPTION]  DEFAULT ((0)),
+	[SCTS] [datetime] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCTS]  DEFAULT (getdate()),
+	[SCUS] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCDF] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCDF]  DEFAULT ((0)),
+	[SCPT] [varchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCAP] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCST] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCWT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCWT]  DEFAULT ((0)),
+	[SCER] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCER]  DEFAULT ((0)),
+	[SCDL] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCDL]  DEFAULT ((0)),
+	[SCCT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCCT]  DEFAULT ((0)),
+	[SCSV] [smallint] NULL CONSTRAINT [DFT_SYS_SOLCONTENT_SCSV]  DEFAULT ((0)),
+ CONSTRAINT [PMK_SYS_SOLCONTENT_ID] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_solfordertype](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[NAME] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_NAME]  DEFAULT ((0)),
+	[CODE] [varchar](max) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_CODE]  DEFAULT ((0)),
+	[TYPEFALG] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CONTENTIMAGEINDEX] [int] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_CONTENTIMAGEINDEX]  DEFAULT ((0)),
+	[FOLDERIMAGEINDEX] [int] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_FOLDERIMAGEINDEX]  DEFAULT ((0)),
+	[IDEDLL] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_IDEDLL]  DEFAULT ((0)),
+	[IDECLASS] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_IDECLASS]  DEFAULT ((0)),
+	[RUNDLL] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_RUNDLL]  DEFAULT ((0)),
+	[RUNCLASS] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_RUNCLASS]  DEFAULT ((0)),
+	[CANNEWFOLDER] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_CANNEWFOLDER]  DEFAULT ((0)),
+	[CANNEWCONTENT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_CANNEWCONTENT]  DEFAULT ((0)),
+	[OFTYPE] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_OFTYPE]  DEFAULT ((0)),
+	[SCUS] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCDF] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCDF]  DEFAULT ((0)),
+	[SCPT] [varchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCAP] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCST] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[SCWT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCWT]  DEFAULT ((0)),
+	[SCER] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCER]  DEFAULT ((0)),
+	[SCDL] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCDL]  DEFAULT ((0)),
+	[SCCT] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCCT]  DEFAULT ((0)),
+	[SCSV] [smallint] NULL CONSTRAINT [DFT_SYS_SOLFORDERTYPE_SCSV]  DEFAULT ((0)),
+ CONSTRAINT [PMK_SYS_SOLFORDERTYPE_ID] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_update_catch](
+	[TableName] [nvarchar](128) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LastTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_update_catch] PRIMARY KEY CLUSTERED 
+(
+	[TableName] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_qualificationauth_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[CODE] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[FOLDERCODE] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_QualificationAuth_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_line_formulas_update](
+	[ID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[SheetID] [uniqueidentifier] NOT NULL,
+	[RowIndex] [int] NOT NULL,
+	[ColumnIndex] [int] NOT NULL,
+	[Formula] [nvarchar](2048) NULL,
+	[CreatedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[CreatedTime] [datetime] NOT NULL,
+	[LastEditedUser] [nvarchar](64) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[LasteditedTime] [datetime] NOT NULL,
+	[IsActive] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_line_formulas_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_Tree_Chart_update](
+	[ID] [nvarchar](36)  NOT NULL ,
+	[scts] [datetime] NULL ,
+	[NodeFlag] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[NodeCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ReportID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ReportName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_engs_Tree_Chart_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_Tree_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL ,
+	[NodeCode] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[NodeType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[RalationID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL ,
+ CONSTRAINT [PK_sys_engs_PrjItemTree_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_SectionInfo_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL ,
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegFrom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegTo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Price] [decimal](18, 2) NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_engs_Prjsct_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_ProjectInfo_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL ,
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ShortName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegFrom] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[PegTo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[LineName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[HigWayClassification] [nvarchar](50) NULL,
+	[TotalDistance] [decimal](18, 2) NULL,
+	[ToltalPrice] [decimal](18, 2) NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_engs_PrjItem_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_ItemInfo_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ItemType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_engs_prjmachine_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_engs_CompanyInfo_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[Description] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[DepType] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[DepAbbrev] [nvarchar](20) COLLATE Chinese_PRC_CI_AS NULL,
+	[ConstructionCompany] [nvarchar](500) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_engs_orginfo_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_FunctionInfos_update](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL ,
+	[scts] [datetime] NULL ,
+	[scpt] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[AssemblyName] [nvarchar](150) COLLATE Chinese_PRC_CI_AS NULL,
+	[FullClassName] [nvarchar](150) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_biz_FunctionInfos_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Users_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[Code] [nvarchar](300) COLLATE Chinese_PRC_CI_AS NULL,
+	[UserName] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Password] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Roles] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsSys] [bit] NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL,
+ CONSTRAINT [PK_sys_auth_Users_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Roles_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[Name] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Code] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Permissions] [nvarchar](max) COLLATE Chinese_PRC_CI_AS NULL,
+	[IsAdministrator] [bit] NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_Roles_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_RecordPermission_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[RecordsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[RecordCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_RecordPermission_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_Permissions_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[ModuleID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[ClsInfo] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_Permissions_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_FunctionPermission_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[FunctionsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_auth_FunctionPermission_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_FieldPermission_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[FieldsID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Indentity] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Chinese_PRC_CI_AS NULL,
+	[Editable] [bit] NULL,
+	[Viewable] [bit] NULL,
+ CONSTRAINT [PK_sys_auth_FieldPermission_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_auth_DataPermission_update](
+	[ID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[SCTS] [datetime] NULL,
+	[TableID] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[FieldName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[FieldValues] [nvarchar](1000) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_auth_DataPermission_update] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[sys_biz_ReportRTConfig](
+	[ID] [varchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL CONSTRAINT [DF_sys_biz_ReportRTConfig_ID]  DEFAULT (newid()),
+	[Scts] [datetime] NULL CONSTRAINT [DF_sys_biz_ReportRTConfig_Scts]  DEFAULT (getdate()),
+	[GroupName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[ReportName] [nvarchar](100) COLLATE Chinese_PRC_CI_AS NULL,
+	[Scts_1] [datetime] NULL,
+	[Scdel] [smallint] NOT NULL DEFAULT ((0)),
+ CONSTRAINT [PK_sys_biz_ReportRTConfig] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[sys_biz_ReportCatlog](
+	[ID] [nvarchar](36) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[Scts] [datetime] NULL,
+	[CatlogCode] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+	[CatlogName] [nvarchar](50) COLLATE Chinese_PRC_CI_AS NULL,
+ CONSTRAINT [PK_sys_biz_ReportCatlog] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+GO
+
+CREATE TABLE [dbo].[sys_devices](
+	[ID] [uniqueidentifier] NOT NULL,
+	[TestRoomCode] [nvarchar](50) NOT NULL,
+	[MachineCode] [nvarchar](50) NOT NULL,
+	[DeviceType] [smallint] NOT NULL,
+	[IsDYSF] [smallint] NOT NULL,
+	[RemoteCode1] [nvarchar](50) NULL,
+	[RemoteCode2] [nvarchar](50) NULL,
+	[DeviceCompany] [nvarchar](50) NULL,
+	[Comment] [nvarchar](1024) NULL,
+	[ClientConfig] [nvarchar](max) NULL,
+	[ConfigUpdateTime] [datetime] NULL,
+	[ConfigStatus] [smallint] NULL,
+	[IsActive] [smallint] NOT NULL,
+	[CreateTime] [datetime] NOT NULL,
+	[CreateBy] [nvarchar](50) NULL,
+	[LastEditTime] [datetime] NOT NULL,
+	[LastEditBy] [nvarchar](50) NULL,
+	[Quantum] [int] NOT NULL,
+ CONSTRAINT [PK_sys_Devices] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[MachineCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT ('') FOR [TestRoomCode]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT ((0)) FOR [DeviceType]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT ((0)) FOR [IsDYSF]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  CONSTRAINT [DF_sys_devices_ConfigStatus]  DEFAULT ((1)) FOR [ConfigStatus]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT ((0)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT (getdate()) FOR [CreateTime]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  DEFAULT (getdate()) FOR [LastEditTime]
+GO
+
+ALTER TABLE [dbo].[sys_devices] ADD  CONSTRAINT [DF_sys_devices_Quantum]  DEFAULT ((0)) FOR [Quantum]
+GO
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[sys_TJ_Factory](
+	[FactoryID] [uniqueidentifier] NOT NULL,
+	[FactoryName] [varchar](100) NULL,
+	[Address] [varchar](120) NULL,
+	[LinkMan] [varchar](50) NULL,
+	[Telephone] [varchar](50) NULL,
+	[Longitude] [numeric](10, 6) NOT NULL,
+	[Latitude] [numeric](10, 6) NOT NULL,
+	[Remark] [varchar](500) NULL,
+	[Status] [tinyint] NOT NULL,
+	[CreateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_sys_TJ_Factory] PRIMARY KEY CLUSTERED 
+(
+	[FactoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Factory] ADD  DEFAULT ((0)) FOR [Longitude]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Factory] ADD  DEFAULT ((0)) FOR [Latitude]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Factory] ADD  DEFAULT ((0)) FOR [Status]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Factory] ADD  DEFAULT (getdate()) FOR [CreateTime]
+GO
+
+/****** Object:  Table [dbo].[sys_TJ_Item]    Script Date: 2014/8/27 13:31:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[sys_TJ_Item](
+	[ItemID] [uniqueidentifier] NOT NULL,
+	[ItemName] [varchar](50) NULL,
+	[Columns] [varchar](4000) NULL,
+	[ItemType] [tinyint] NOT NULL,
+	[Weight] [smallint] NOT NULL,
+	[Status] [tinyint] NOT NULL,
+ CONSTRAINT [PK_sys_TJ_Item] PRIMARY KEY CLUSTERED 
+(
+	[ItemID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Item] ADD  DEFAULT ((0)) FOR [ItemType]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Item] ADD  DEFAULT ((10)) FOR [Weight]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_Item] ADD  DEFAULT ((1)) FOR [Status]
+GO
+
+
+/****** Object:  Table [dbo].[sys_TJ_Item_Module]    Script Date: 2014/8/27 13:31:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[sys_TJ_Item_Module](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ItemID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_sys_TJ_Item_Module] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+/****** Object:  Table [dbo].[sys_TJ_MainData]    Script Date: 2014/8/27 13:31:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[sys_TJ_MainData](
+	[DataID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NOT NULL,
+	[FactoryID] [uniqueidentifier] NOT NULL,
+	[SegmentCode] [varchar](32) NULL,
+	[CompanyCode] [varchar](32) NULL,
+	[TestRoomCode] [varchar](32) NULL,
+	[ItemID] [uniqueidentifier] NOT NULL,
+	[ItemType] [tinyint] NOT NULL,
+	[FactoryName] [varchar](100) NOT NULL,
+	[BGBH] [varchar](256) NULL,
+	[BGRQ] [datetime] NULL,
+	[QDDJ] [varchar](64) NULL,
+	[PZDJ] [varchar](50) NULL,
+	[SGBW] [varchar](500) NULL,
+	[ShuLiang] [decimal](18, 6) NULL,
+	[ZuZhi] [float] NULL,
+	[f1] [float] NULL,
+	[f2] [float] NULL,
+	[f3] [float] NULL,
+	[f4] [float] NULL,
+	[f5] [float] NULL,
+	[f6] [float] NULL,
+	[f7] [float] NULL,
+	[f8] [float] NULL,
+	[f9] [float] NULL,
+	[f10] [float] NULL,
+	[f11] [float] NULL,
+	[f12] [float] NULL,
+	[f13] [float] NULL,
+	[f14] [float] NULL,
+	[f15] [float] NULL,
+	[f16] [float] NULL,
+	[f17] [float] NULL,
+	[f18] [float] NULL,
+	[f19] [float] NULL,
+	[d1] [datetime] NULL,
+	[d2] [datetime] NULL,
+	[d3] [datetime] NULL,
+	[d4] [datetime] NULL,
+	[d5] [datetime] NULL,
+	[t1] [varchar](200) NULL,
+	[t2] [varchar](200) NULL,
+	[t3] [varchar](200) NULL,
+	[t4] [varchar](200) NULL,
+	[t5] [varchar](200) NULL,
+	[t6] [varchar](200) NULL,
+	[t7] [varchar](200) NULL,
+	[t8] [varchar](200) NULL,
+	[t9] [varchar](200) NULL,
+	[t10] [varchar](200) NULL,
+	[t11] [varchar](200) NULL,
+	[t12] [varchar](200) NULL,
+	[t13] [varchar](200) NULL,
+	[t14] [varchar](200) NULL,
+	[t15] [varchar](200) NULL,
+	[t16] [varchar](200) NULL,
+	[LasteditedTime] [datetime] NULL,
+ CONSTRAINT [PK_sys_TJ_MainData] PRIMARY KEY CLUSTERED 
+(
+	[DataID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[sys_TJ_MainData] ADD  DEFAULT ((0)) FOR [ItemType]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_MainData] ADD  DEFAULT ((0)) FOR [ShuLiang]
+GO
+
+ALTER TABLE [dbo].[sys_TJ_MainData] ADD  DEFAULT ((0)) FOR [ZuZhi]
+GO
+
+
+/****** Object:  Table [dbo].[sys_TJ_StandardValue]    Script Date: 2014/8/27 13:32:03 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[sys_TJ_StandardValue](
+	[ItemID] [uniqueidentifier] NOT NULL,
+	[ItemName] [nvarchar](50) NOT NULL,
+	[Model] [nvarchar](100) NOT NULL,
+	[StandardValue] [nvarchar](100) NULL,
+	[IndexID] [uniqueidentifier] NOT NULL,
+	[ModuleID] [uniqueidentifier] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IndexID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
+
+
+--视图
+
+GO
+create view [dbo].[v_bs_codeName] 
+  AS
+  
+  select 
+c.工程编码,
+c.工程名称,
+d.标段编码,
+d.标段名称,
+e.单位编码,
+e.单位名称,
+f.试验室编码,
+f.试验室名称
+from 
+(select a.NodeCode as '工程编码',b.Description as '工程名称' from sys_engs_Tree as a,sys_engs_ProjectInfo as b where a.RalationID = b.ID) as c,
+(select a.NodeCode as '标段编码',b.Description as '标段名称' from sys_engs_Tree as a,sys_engs_SectionInfo as b where a.RalationID = b.ID) as d,
+(select a.NodeCode as '单位编码',b.Description  as '单位名称' from sys_engs_Tree as a,sys_engs_CompanyInfo as b where a.RalationID = b.ID) as e,
+(select a.NodeCode as '试验室编码',b.Description as '试验室名称' from sys_engs_Tree as a,sys_engs_ItemInfo as b where a.RalationID = b.ID) as f
+where 
+substring(f.试验室编码,1,4) = c.工程编码 and 
+substring(f.试验室编码,1,8) = d.标段编码 and 
+substring(f.试验室编码,1,12) = e.单位编码
+
+GO
+
+CREATE VIEW [dbo].[v_codeName]
+AS
+SELECT     a.RalationID, a.NodeCode, b.Description
+FROM         dbo.sys_engs_Tree AS a INNER JOIN
+                      dbo.sys_engs_ProjectInfo AS b ON a.RalationID = b.ID  AND a.Scdel=0
+UNION
+SELECT     a1.RalationID, a1.NodeCode, b.Description
+FROM         dbo.sys_engs_Tree AS a1 INNER JOIN
+                      dbo.sys_engs_SectionInfo AS b ON a1.RalationID = b.ID  AND a1.Scdel=0
+UNION
+SELECT     a2.RalationID, a2.NodeCode, b.Description
+FROM         dbo.sys_engs_Tree AS a2 INNER JOIN
+                      dbo.sys_engs_CompanyInfo AS b ON a2.RalationID = b.ID  AND a2.Scdel=0
+UNION
+SELECT     a3.RalationID, a3.NodeCode, b.Description
+FROM         dbo.sys_engs_Tree AS a3 INNER JOIN
+                      dbo.sys_engs_ItemInfo AS b ON a3.RalationID = b.ID AND a3.Scdel=0
+GO

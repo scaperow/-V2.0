@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TestCases>
+  <case server="115.29.206.137" db="SYGLDB_ZhengXu" wtbh="ZXZQ01-02-GJ-W2014062208" type="WN" zj="16"  dhbj="102.75" qddj="" active="0" >
+      <check sheet_id="270a1da6-2045-405a-ae77-18c0c98c1edd" cell_name="D29" min_value="122" max_value="123" />
+      <check sheet_id="270a1da6-2045-405a-ae77-18c0c98c1edd" cell_name="G29" min_value="120" max_value="121" />
+  </case>
+  <case server="115.29.206.137" db="SYGLDB_ZhengXu" wtbh="ZXZQ07-DS-TKY-W2014060111" type="YL" zj="16" qddj="" active="1" >
+      <check sheet_id="303c05a6-4ff4-4f15-8118-69968988ee3b" cell_name="H6" min_value="1200" max_value="1500" />
+  </case>
+  <case server="115.29.206.137" db="SYGLDB_ZhengXu" wtbh="ZXZQ03-042-TKY-W2014050401_-1" type="YL" zj="16" qddj="" active="0" >
+      <check sheet_id="303c05a6-4ff4-4f15-8118-69968988ee3b" cell_name="H6" min_value="1200" max_value="1500" />
+  </case>
+  <case server="115.29.206.137" db="SYGLDB_ZhengXu" wtbh="ZXZQ03-042-TKY-W2014050401_-1" type="YL" zj="16" qddj="" active="0" >
+      <check sheet_id="303c05a6-4ff4-4f15-8118-69968988ee3b" cell_name="H6" min_value="1200" max_value="1500" />
+  </case>
+</TestCases>

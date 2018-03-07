@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetBHZInfoData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fvender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xzbm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBHZInfoDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBHZInfoDataResult" type="xs:int" />
+        <xs:element minOccurs="0" name="jsoBHZInfo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="errMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLabData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fvender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xzbm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="beginTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLabDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLabDataResult" type="xs:int" />
+        <xs:element minOccurs="0" name="jsoLabInfo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="errMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPressureData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fvender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xzbm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="f_wtbh" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPressureDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPressureDataResult" type="xs:int" />
+        <xs:element minOccurs="0" name="jsoPressureInfo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="errMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUniversalData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fvender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="xzbm" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="f_wtbh" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUniversalDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUniversalDataResult" type="xs:int" />
+        <xs:element minOccurs="0" name="jsoUniversalInfo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="errMsg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

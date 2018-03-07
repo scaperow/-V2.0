@@ -1,0 +1,81 @@
+﻿--删除新架构脚本
+
+DROP TABLE [dbo].[sys_module]    
+DROP TABLE [dbo].[sys_module_config]    
+DROP TABLE [dbo].[sys_sheet]    
+DROP TABLE [dbo].[sys_module_sheet]    
+DROP TABLE [dbo].[sys_document]    
+DROP TABLE [dbo].[sys_custom_view]    
+DROP TABLE [dbo].[sys_formulas]    
+DROP TABLE [dbo].[sys_line_formulas]    
+DROP TABLE [dbo].[sys_invalid_document]    
+DROP TABLE [dbo].[sys_operate_log]    
+DROP TABLE [dbo].[sys_request_change]    
+DROP TABLE [dbo].[sys_stadium]    
+DROP TABLE [dbo].[sys_stadium_config]    
+DROP TABLE [dbo].[sys_stadium_config_days]    
+DROP TABLE [dbo].[sys_test_data]    
+DROP TABLE [dbo].[sys_module_update]    
+DROP TABLE [dbo].[sys_module_config_update]    
+DROP TABLE [dbo].[sys_sheet_update]    
+DROP TABLE [dbo].[sys_module_sheet_update]    
+DROP TABLE [dbo].[sys_formulas_update]    
+DROP TABLE [dbo].[sys_stadium_config_update]    
+DROP TABLE [dbo].[sys_stadium_config_days_update]    
+DROP TABLE [dbo].[sys_biz_ModuleCatlog_update]    
+DROP TABLE [dbo].[sys_biz_SheetCatlog_update]    
+DROP TABLE [dbo].[sys_dictionary_update]    
+DROP TABLE [dbo].[sys_report]    
+DROP TABLE [dbo].[sys_report_config]    
+DROP TABLE [dbo].[sys_report_config_module]    
+DROP TABLE [dbo].[sys_update]    
+DROP TABLE [dbo].[sys_auth_DataPermission]    
+DROP TABLE [dbo].[sys_auth_FieldPermission]    
+DROP TABLE [dbo].[sys_auth_FunctionPermission]    
+DROP TABLE [dbo].[sys_auth_Permissions]    
+DROP TABLE [dbo].[sys_auth_RecordPermission]    
+DROP TABLE [dbo].[sys_auth_Roles]    
+DROP TABLE [dbo].[sys_auth_Users]    
+DROP TABLE [dbo].[sys_biz_FunctionInfos]    
+DROP TABLE [dbo].[sys_biz_ModuleCatlog]    
+DROP TABLE [dbo].[sys_biz_reminder_Itemfrequency]    
+DROP TABLE [dbo].[sys_biz_reminder_testitem]    
+DROP TABLE [dbo].[sys_biz_SheetCatlog]    
+DROP TABLE [dbo].[sys_dictionary]    
+DROP TABLE [dbo].[sys_engs_CompanyInfo]    
+DROP TABLE [dbo].[sys_engs_ItemInfo]    
+DROP TABLE [dbo].[sys_engs_ProjectInfo]    
+DROP TABLE [dbo].[sys_engs_SectionInfo]    
+DROP TABLE [dbo].[sys_engs_Tree]    
+DROP TABLE [dbo].[sys_engs_Tree_Chart]    
+DROP TABLE [dbo].[sys_loginlog]    
+DROP TABLE [dbo].[sys_qualificationauth]    
+DROP TABLE [dbo].[sys_sms_log]    
+DROP TABLE [dbo].[sys_sms_receiver]    
+DROP TABLE [dbo].[sys_sms_stadium_log]    
+DROP TABLE [dbo].[sys_solforldr]    
+DROP TABLE [dbo].[sys_solcontent]    
+DROP TABLE [dbo].[sys_solfordertype] 
+DROP TABLE [dbo].[sys_day]
+DROP TABLE [dbo].[sys_module_watermark] 
+DROP VIEW dbo.v_bs_codeName
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_update]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_pager]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_pager]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_pxjz_report]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_pxjz_report]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_report]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_report]
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sp_px_chart]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[sp_px_chart]
+
+delete from dbo.sys_auth_Users where username IN ('初龙','唐晓妍','李晓辉','张波','孟庆杰')
+
+

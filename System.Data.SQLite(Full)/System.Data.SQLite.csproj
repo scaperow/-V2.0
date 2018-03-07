@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{54F3E1C6-E67B-445B-8BEC-D6E5527973CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>System.Data.SQLite</RootNamespace>
+    <AssemblyName>System.Data.SQLite</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;USE_INTEROP_DLL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;USE_INTEROP_DLL</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="System.Data.SQLite.CF.snk" />
+    <None Include="System.Data.SQLite.snk" />
+    <None Include="Tools\SQLite.Interop\SQLite.Interop.aps" />
+    <None Include="Tools\SQLite.Interop\SQLite.Interop.vcproj" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SQLite3.cs" />
+    <Compile Include="SQLite3_UTF16.cs" />
+    <Compile Include="SQLiteBase.cs" />
+    <Compile Include="SQLiteCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SQLiteCommandBuilder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SQLiteConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SQLiteConnectionStringBuilder.cs" />
+    <Compile Include="SQLiteConvert.cs" />
+    <Compile Include="SQLiteDataAdapter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SQLiteDataReader.cs" />
+    <Compile Include="SQLiteEnlistment.cs" />
+    <Compile Include="SQLiteException.cs" />
+    <Compile Include="SQLiteFactory.cs" />
+    <Compile Include="SQLiteFunction.cs" />
+    <Compile Include="SQLiteFunctionAttribute.cs" />
+    <Compile Include="SQLiteMetaDataCollectionNames.cs" />
+    <Compile Include="SQLiteParameter.cs" />
+    <Compile Include="SQLiteParameterCollection.cs" />
+    <Compile Include="SQLiteStatement.cs" />
+    <Compile Include="SQLiteTransaction.cs" />
+    <Compile Include="SR.Designer.cs" />
+    <Compile Include="UnsafeNativeMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataTypes.xml" />
+    <Content Include="MetaDataCollections.xml" />
+    <Content Include="SQLiteCommand.bmp" />
+    <Content Include="SQLiteConnection.bmp" />
+    <Content Include="SQLiteDataAdapter.bmp" />
+    <Content Include="Tools\mergebin.exe" />
+    <Content Include="Tools\SQLite.Interop\crypt.c" />
+    <Content Include="Tools\SQLite.Interop\fixsource.vbs" />
+    <Content Include="Tools\SQLite.Interop\interop.c" />
+    <Content Include="Tools\SQLite.Interop\merge.h" />
+    <Content Include="Tools\SQLite.Interop\merge_full.h" />
+    <Content Include="Tools\SQLite.Interop\resource.h" />
+    <Content Include="Tools\SQLite.Interop\SQLite.Interop.rc" />
+    <Content Include="Tools\SQLite.Interop\src\alter.c" />
+    <Content Include="Tools\SQLite.Interop\src\analyze.c" />
+    <Content Include="Tools\SQLite.Interop\src\attach.c" />
+    <Content Include="Tools\SQLite.Interop\src\auth.c" />
+    <Content Include="Tools\SQLite.Interop\src\btree.c" />
+    <Content Include="Tools\SQLite.Interop\src\btree.h" />
+    <Content Include="Tools\SQLite.Interop\src\build.c" />
+    <Content Include="Tools\SQLite.Interop\src\callback.c" />
+    <Content Include="Tools\SQLite.Interop\src\complete.c" />
+    <Content Include="Tools\SQLite.Interop\src\date.c" />
+    <Content Include="Tools\SQLite.Interop\src\delete.c" />
+    <Content Include="Tools\SQLite.Interop\src\expr.c" />
+    <Content Include="Tools\SQLite.Interop\src\func.c" />
+    <Content Include="Tools\SQLite.Interop\src\hash.c" />
+    <Content Include="Tools\SQLite.Interop\src\hash.h" />
+    <Content Include="Tools\SQLite.Interop\src\insert.c" />
+    <Content Include="Tools\SQLite.Interop\src\keywordhash.h" />
+    <Content Include="Tools\SQLite.Interop\src\legacy.c" />
+    <Content Include="Tools\SQLite.Interop\src\main.c" />
+    <Content Include="Tools\SQLite.Interop\src\opcodes.c" />
+    <Content Include="Tools\SQLite.Interop\src\opcodes.h" />
+    <Content Include="Tools\SQLite.Interop\src\os.c" />
+    <Content Include="Tools\SQLite.Interop\src\os.h" />
+    <Content Include="Tools\SQLite.Interop\src\os_common.h" />
+    <Content Include="Tools\SQLite.Interop\src\os_os2.c" />
+    <Content Include="Tools\SQLite.Interop\src\os_unix.c" />
+    <Content Include="Tools\SQLite.Interop\src\os_win.c" />
+    <Content Include="Tools\SQLite.Interop\src\pager.c" />
+    <Content Include="Tools\SQLite.Interop\src\pager.h" />
+    <Content Include="Tools\SQLite.Interop\src\parse.c" />
+    <Content Include="Tools\SQLite.Interop\src\parse.h" />
+    <Content Include="Tools\SQLite.Interop\src\pragma.c" />
+    <Content Include="Tools\SQLite.Interop\src\prepare.c" />
+    <Content Include="Tools\SQLite.Interop\src\printf.c" />
+    <Content Include="Tools\SQLite.Interop\src\random.c" />
+    <Content Include="Tools\SQLite.Interop\src\select.c" />
+    <Content Include="Tools\SQLite.Interop\src\shell.c" />
+    <Content Include="Tools\SQLite.Interop\src\sqlite3.def" />
+    <Content Include="Tools\SQLite.Interop\src\sqlite3.h" />
+    <Content Include="Tools\SQLite.Interop\src\sqliteInt.h" />
+    <Content Include="Tools\SQLite.Interop\src\table.c" />
+    <Content Include="Tools\SQLite.Interop\src\tclsqlite.c" />
+    <Content Include="Tools\SQLite.Interop\src\tokenize.c" />
+    <Content Include="Tools\SQLite.Interop\src\trigger.c" />
+    <Content Include="Tools\SQLite.Interop\src\update.c" />
+    <Content Include="Tools\SQLite.Interop\src\utf.c" />
+    <Content Include="Tools\SQLite.Interop\src\util.c" />
+    <Content Include="Tools\SQLite.Interop\src\vacuum.c" />
+    <Content Include="Tools\SQLite.Interop\src\vdbe.c" />
+    <Content Include="Tools\SQLite.Interop\src\vdbe.h" />
+    <Content Include="Tools\SQLite.Interop\src\vdbeapi.c" />
+    <Content Include="Tools\SQLite.Interop\src\vdbeaux.c" />
+    <Content Include="Tools\SQLite.Interop\src\vdbefifo.c" />
+    <Content Include="Tools\SQLite.Interop\src\vdbeInt.h" />
+    <Content Include="Tools\SQLite.Interop\src\vdbemem.c" />
+    <Content Include="Tools\SQLite.Interop\src\where.c" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy  $(TargetFileName) "$(SolutionDir)RefrenceCenter"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

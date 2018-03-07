@@ -1,0 +1,1022 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{171F3127-355E-42C3-86BD-9FFAB6DE1C18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BizCommon</RootNamespace>
+    <AssemblyName>BizCommon</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FarPoint.Excel, Version=4.0.2011.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="FarPoint.Win.Spread, Version=4.0.2008.2005, Culture=neutral, PublicKeyToken=327c3516b1b18457, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\FarPoint.Win.Spread.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="Office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+    <Reference Include="PdfSharp, Version=1.0.898.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Yqun.Bases, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.ContextCache, Version=1.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.ContextCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.Encoder, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.Encoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Yqun.Common.Split, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefrenceCenter\Yqun.Common.Split.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="关联的报表\LinkedReportInfo.cs" />
+    <Compile Include="审批资料修改\DataModificationInfo.cs" />
+    <Compile Include="帮助类\TestRoomBasicInformation.cs" />
+    <Compile Include="帮助类\IndexDescriptionPair.cs" />
+    <Compile Include="抽检频率\ItemFrequency.cs" />
+    <Compile Include="抽检频率\SamplingFrequencyInfo.cs" />
+    <Compile Include="新架构模型\BioKeyInfo.cs" />
+    <Compile Include="新架构模型\StatisticsModuleSetting.cs" />
+    <Compile Include="新架构模型\CellChangedNotifyItem.cs" />
+    <Compile Include="新架构模型\CellLogic.cs" />
+    <Compile Include="新架构模型\Sys_Factory.cs" />
+    <Compile Include="新架构模型\Sys_Statistics_Item.cs" />
+    <Compile Include="新架构模型\Sys_TestData.cs" />
+    <Compile Include="新架构模型\ConfigHelper.cs" />
+    <Compile Include="新架构模型\Enumeration.cs" />
+    <Compile Include="新架构模型\JZCell.cs" />
+    <Compile Include="新架构模型\JZCellProperty.cs" />
+    <Compile Include="新架构模型\JZCellStyle.cs" />
+    <Compile Include="新架构模型\JZCommonHelper.cs" />
+    <Compile Include="新架构模型\JZCustomView.cs" />
+    <Compile Include="新架构模型\JZDocument.cs" />
+    <Compile Include="新架构模型\JZFile.cs" />
+    <Compile Include="新架构模型\JZFormulaData.cs" />
+    <Compile Include="新架构模型\JZModifyItem.cs" />
+    <Compile Include="新架构模型\JZRealTimeData.cs" />
+    <Compile Include="新架构模型\JZReport.cs" />
+    <Compile Include="新架构模型\JZSheet.cs" />
+    <Compile Include="新架构模型\JZStadiumConfig.cs" />
+    <Compile Include="新架构模型\JZTestCell.cs" />
+    <Compile Include="新架构模型\JZTestConfig.cs" />
+    <Compile Include="新架构模型\JZTestData.cs" />
+    <Compile Include="新架构模型\JZTestEnum.cs" />
+    <Compile Include="新架构模型\JZUploadItem.cs" />
+    <Compile Include="新架构模型\JZUser32Helper.cs" />
+    <Compile Include="新架构模型\JZWNJ.cs" />
+    <Compile Include="新架构模型\JZYLJ.cs" />
+    <Compile Include="新架构模型\GGCLabDataModel.cs" />
+    <Compile Include="新架构模型\ModifyItem.cs" />
+    <Compile Include="新架构模型\ModuleSetting.cs" />
+    <Compile Include="新架构模型\PictureToExcel.cs" />
+    <Compile Include="新架构模型\QualifySetting.cs" />
+    <Compile Include="新架构模型\Sys_Device.cs" />
+    <Compile Include="新架构模型\Sys_Document.cs" />
+    <Compile Include="新架构模型\Sys_Line.cs" />
+    <Compile Include="新架构模型\Sys_Module.cs" />
+    <Compile Include="新架构模型\Sys_Page.cs" />
+    <Compile Include="新架构模型\Sys_RequestChange.cs" />
+    <Compile Include="新架构模型\Sys_Sheet.cs" />
+    <Compile Include="新架构模型\Sys_TaiZhang.cs" />
+    <Compile Include="新架构模型\Sys_Temperature.cs" />
+    <Compile Include="新架构模型\UploadSetting.cs" />
+    <Compile Include="新架构模型\JZTJColumn.cs" />
+    <Compile Include="模板导入导出\ModuleXMLEntity.cs" />
+    <Compile Include="电液伺服模型\ModelTableConfiguration.cs" />
+    <Compile Include="电液伺服模型\PostDataInfo.cs" />
+    <Compile Include="电液伺服模型\WNJDataInfo.cs" />
+    <Compile Include="电液伺服模型\YLJDataInfo.cs" />
+    <Compile Include="表单设计器\FieldStrings.cs" />
+    <Compile Include="试验检测\ReportEvaluateCondition.cs" />
+    <Compile Include="写数函数\ExpressionInfo.cs" />
+    <Compile Include="写数函数\FieldInfo.cs" />
+    <Compile Include="写数函数\ReadDataFunctionInfo.cs" />
+    <Compile Include="单元格类型\CompareOperation.cs" />
+    <Compile Include="单元格类型\DataFilterCondition.cs" />
+    <Compile Include="单元格类型\DataFilterItem.cs" />
+    <Compile Include="单元格类型\ParameterValue.cs" />
+    <Compile Include="单元格类型\ReferenceItem.cs" />
+    <Compile Include="单元格类型\ReferenceInfoBase.cs" />
+    <Compile Include="台账设置\ColumnRegular.cs" />
+    <Compile Include="单元格类型\CellType.cs">
+    </Compile>
+    <Compile Include="帮助类\ReportInfo.cs" />
+    <Compile Include="帮助类\DragHelper.cs" />
+    <Compile Include="报表\ReportConfiguration.cs" />
+    <Compile Include="报表\ReportDataItem.cs" />
+    <Compile Include="表单设计器\CrossSheetFormulaInfo.cs" />
+    <Compile Include="表单设计器\DataTableSchema.cs" />
+    <Compile Include="表单设计器\FieldDefineInfo.cs" />
+    <Compile Include="表单设计器\FunctionItemInfo.cs" />
+    <Compile Include="表单设计器\ModuleConfiguration.cs" />
+    <Compile Include="台账设置\ModuleField.cs" />
+    <Compile Include="工程类\Orginfo.cs" />
+    <Compile Include="工程类\PrjDictionary.cs" />
+    <Compile Include="工程类\PrjMachine.cs" />
+    <Compile Include="工程类\Prjsct.cs" />
+    <Compile Include="工程类\Project.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="工程类\QueryInfo.cs" />
+    <Compile Include="帮助类\ResourceHelper.cs" />
+    <Compile Include="Properties\IcoResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IcoResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="表单设计器\SheetConfiguration.cs" />
+    <Compile Include="表单设计器\TableDefineInfo.cs" />
+    <Compile Include="写数函数\WriteFunction.cs" />
+    <Compile Include="试验检测\ItemCondition.cs" />
+    <Compile Include="龄期\StadiumConfig.cs" />
+    <Compile Include="龄期\StadiumInfo.cs" />
+    <Compile Include="龄期\TestItemInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\IcoResource.resx">
+      <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IcoResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\man.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cell.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dll.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\del.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sys.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selectall.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cells.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Classes.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Col.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Conn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ControlPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cut.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Forlder.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoodSelect.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IDCard.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewMore.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OneUser.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Property.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedCell.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Rubish.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Safe.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SafeUser.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveAs.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveOut.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Setting.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Static.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Table.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tools.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnConnect.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbnail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Title.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YqunSoft.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ask.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Statics.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dep.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\First.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Last.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\richText.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpLoad.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DownLoad.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UpDownImagePublic.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataBackImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DatacomebackImage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewAdd.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewSaveOut.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewRefresh.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewDel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewOK.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerWarning.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerWarningSm.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.UserControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.viewcode.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.VScrollBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.WebBrowser.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.dotdotdot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Arrow.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Design.ComponentEditorPage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Error.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.IconInError.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.wfc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.wfsecurity.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ActiveDocumentHost.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.alignment.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.alignToGrid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Animation.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.AddNew.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.Delete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.MoveFirst.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.MoveLast.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.MoveNext.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingNavigator.MovePrevious.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.BindingSource.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.blank.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.bringToFront.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Button.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.CheckBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Checked.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.CheckedListBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ColorDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ComboBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ComponentModel.OrderImages.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ContextMenu.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ContextMenuStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.copy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.cut.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataConnector.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGrid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.backarrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.backarrow_bidi.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.Details.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.right.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridCaption.up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridParentRows.LeftArrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridParentRows.RightArrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridRow.error.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridRow.left.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridRow.pencil.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridRow.right.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridRow.star.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridView.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewButtonColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewCheckBoxColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewComboBoxColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewImageColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewLinkColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.error.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.left.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.leftstar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.pencil_ltr.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.pencil_rtl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.right.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.rightstar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewRow.star.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataGridViewTextBoxColumn.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.AddNew.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.Delete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.MoveFirst.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.MoveLast.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.MoveNext.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DataNavigator.MovePrevious.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DateTimePicker.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DefaultControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.delete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Design.EventsTab.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.displaystyle.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.DomainUpDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Edit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.editdropdownlist.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ErrorControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ErrorProvider.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.FlowLayoutPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.FolderBrowserDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.FontDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Form.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Grid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.GroupBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.help.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.HelpProvider.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.HScrollBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.HTMLControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.image.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ImageInError.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ImageList.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.IndeterminateChecked.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Label.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.LinkLabel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ListBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ListView.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.lockControls.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.MainMenu.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.MaskedTextBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.MenuStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.MonthCalendar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.MultiplexPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.new.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.NotifyIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.NumericUpDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.open.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.OpenFileDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.overflowButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PageSetupDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Panel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.paste.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PBAlpha.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PBCatego.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PBEvent.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PBPPage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PBProp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PictureBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PictureBox.Loading.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.print.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PrintDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.printPreview.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PrintPreviewControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PrintPreviewDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PrintPreviewStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ProgressBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.properties.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PropertyGrid.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.PropertyGridInternal.PropertiesTab.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.RadioButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Rebar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.RichEdit.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.RichTextBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.save.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.SaveFileDialog.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ScrollButtonDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ScrollButtonUp.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.sendToBack.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Server.Arrow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.SplitContainer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Splitter.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.SplitterPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.StatusBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.StatusStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.StatusStripPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TabControl.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TableLayoutPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TabPage.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TabStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TextBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.Timer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolBarGrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStrip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripComboBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContainer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContainer_BottomToolStripPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContainer_LeftToolStripPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContainer_RightToolStripPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContainer_TopToolStripPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripContentPanel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripDropDown.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripDropDownButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripDropDownMenu.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripLabel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripMenuItem.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripPanel_standalone.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripProgressBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripSeparator.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripSplitButton.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripStatusLabel.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolStripTextBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.ToolTip.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrackBar.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrayIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TreeView.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerGlobe.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerHighRisk.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerHighRiskSm.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerOK.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\System.Windows.Forms.TrustManagerOKSm.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewDotOpen.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newadd1616.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newaddsub1616.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\图表类型.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy  $(TargetFileName) "$(SolutionDir)RefrenceCenter"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
